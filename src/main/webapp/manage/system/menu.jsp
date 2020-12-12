@@ -18,6 +18,40 @@ Collection<MenuItem> menus = (Collection<MenuItem>)session.getAttribute("userMen
 
         <ul class="nav nav-list" id="side-menu">
 
+            <!-- 喜聘导航 -->
+            <li class="menu-item active">
+                <a id="item_1"  href="<%=path%><%="" %>" >
+                    <i class="icon-desktop"></i>
+                    <span class="menu-text">首页</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a id="item_2"  href="<%=path%><%="" %>" >
+                    <i class="icon-edit"></i>
+                    <span class="menu-text">内容管理</span>
+                </a>
+                <ul class="submenu">
+                    <li class="menu-item active" >
+                        <a id="item_news"  href="<%=path%>/manage/news/selectList" >
+                            <i class="icon-double-angle-right"></i>
+                            新闻管理
+                        </a>
+                    </li>
+                    <li class="menu-item active" >
+                        <a id="item_case_type"  href="<%=path%>/manage/caseType/selectList" >
+                            <i class="icon-double-angle-right"></i>
+                            案例分类管理
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item">
+                <a id="item_3"  href="<%=path%><%="" %>" >
+                    <i class="icon-cog bigger-150"></i>
+                    <span class="menu-text">系统管理</span>
+                </a>
+            </li>
+
             <%if(menus!=null && menus.size()>0){
                 for(MenuItem menu:menus){ %>
             <li class="menu-item <%if(getServletInfo().equals(menu.getName())){%>active<%}%>">

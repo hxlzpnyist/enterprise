@@ -127,6 +127,14 @@ public abstract class BaseController<E extends PageModel> {
 		addMessage(flushAttrs,"操作成功！");
 		return "redirect:selectList";
 	}
+
+	@RequestMapping(value="delete",method = RequestMethod.GET)
+	public String delete(HttpServletRequest request,String id,@ModelAttribute("e") E e,RedirectAttributes flushAttrs) throws Exception{
+		getService().deletes(new String[]{id});
+		addMessage(flushAttrs,"操作成功！");
+		return "redirect:selectList";
+	}
+
 	/**
 	 *  insert之后，selectList之前执行的动作，一般需要清除添加的E，否则查询会按照E的条件进行查询.
      * 	部分情况下需要保留某些字段，可以选择不清除

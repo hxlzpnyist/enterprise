@@ -79,6 +79,7 @@ public class PageModel implements CleanBean{
 
 
 
+
 	public int getId() {
 		return id;
 	}
@@ -88,6 +89,7 @@ public class PageModel implements CleanBean{
 	public void setId(int id) {
 		this.id = id;
 	}
+
 
 
 
@@ -135,7 +137,7 @@ public class PageModel implements CleanBean{
 		list = null;
 		offset = 0;
 		recordsTotal = 0;
-		id = 0;
+		//id = 0;
 	}
 
 

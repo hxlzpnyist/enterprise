@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="caseType">
+    <select id="caseType.selectPageList" parameterType="com.enterprise.entity.CaseType" resultType="com.enterprise.entity.CaseType">
+        select * from t_case_type where 1=1
+        <if test="name!=null and name!=''">
+            and name like "%"#{name}"%"
+        </if>
+        order by id DESC
+        limit #{offset},#{pageSize}
+    </select>
+    <select id="caseType.selectPageCount" parameterType="com.enterprise.entity.CaseType" resultType="java.lang.Integer">
+        select count(*) from t_case_type where 1=1
+        <if test="name!=null and name!=''">
+            and name like "%"#{name}"%"
+        </if>
+    </select>
+    <insert id="caseType.insert" parameterType="com.enterprise.entity.CaseType" useGeneratedKeys="true" keyProperty="id">
+        insert into t_case_type(
+        id
+        <if test="name!=null and name!=''">
+            ,name
+        </if>
+        ,createtime
+        <if test="sort!=null and sort!=''">
+            ,sort
+        </if>
+        <if test="display!=null and display!=''">
+            ,display
+        </if>
+        ) values (
+        #{id}
+        <if test="name!=null and name!=''">
+            ,#{name}
+        </if>
+        ,now()
+        <if test="sort!=null and sort!=''">
+            ,#{sort}
+        </if>
+        <if test="display!=null and display!=''">
+            ,#{display}
+        </if>
+        )
+    </insert>
+    <update id="caseType.update" parameterType="com.enterprise.entity.CaseType">
+        update t_case_type set
+        id = #{id}
+        <if test="name!=null and name!=''">
+            ,name=#{name}
+        </if>
+        <if test="sort!=null and sort!=''">
+            ,sort=#{sort}
+        </if>
+        <if test="display!=null and display!=''">
+            ,display=#{display}
+        </if>
+
+        where id = #{id}
+    </update>
+    <select id="caseType.selectOne" parameterType="com.enterprise.entity.CaseType" resultType="com.enterprise.entity.CaseType">
+        select * from t_case_type where 1=1
+        <if test="id!=0">
+            and id=#{id}
+        </if>
+        <if test="name!=null and name!=''">
+            and name=#{name}
+        </if>
+    </select>
+
+
+    <select id="caseType.selectList" parameterType="com.enterprise.entity.CaseType" resultType="com.enterprise.entity.CaseType">
+        select * from t_case_type where 1=1
+        order by id DESC
+    </select>
+    <select id="caseType.selectById" parameterType="int" resultType="com.enterprise.entity.CaseType">
+        select * from t_case_type where 1=1 and id=#{id}
+    </select>
+    <select id="caseType.selectNext" parameterType="int" resultType="com.enterprise.entity.CaseType">
+        select * from t_case_type where id = (select id from t_case_type where id &lt; #{id} order by id desc limit 1)
+    </select>
+    <select id="caseType.selectPrevious" parameterType="int" resultType="com.enterprise.entity.CaseType">
+        select * from t_case_type where id = (select id from t_case_type where id &gt; #{id} order by id desc limit 1)
+    </select>
+    <delete id="caseType.delete" parameterType="com.enterprise.entity.CaseType">
+        delete from t_case_type where id=#{id}
+    </delete>
+    <delete id="caseType.deleteById" parameterType="int">
+        delete from t_case_type where id=#{id}
+    </delete>
+</mapper>

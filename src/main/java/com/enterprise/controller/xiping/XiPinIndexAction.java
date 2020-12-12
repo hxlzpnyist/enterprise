@@ -1,4 +1,4 @@
-package com.enterprise.controller.front;
+package com.enterprise.controller.xiping;
 
 import com.enterprise.cache.FrontCache;
 import com.enterprise.entity.Home;
@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletRequest;
  * 主页
  */
 @Controller
-@RequestMapping("/")
-public class IndexAction {
+@RequestMapping("/xipin")
+public class XiPinIndexAction {
 
     @Autowired
     private FrontCache frontCache;
@@ -30,9 +30,7 @@ public class IndexAction {
 
     @RequestMapping({"/", "/index"})
     public String index(HttpServletRequest request) {
-        request.setAttribute("homeData", homeService.selectOne(new Home()));
-        request.setAttribute("homeFeatureData", homeFeatureService.selectList(new HomeFeature()));
-        return frontCache.getSyle() + "/index";
+        return "/xipin/index";
     }
 
 
