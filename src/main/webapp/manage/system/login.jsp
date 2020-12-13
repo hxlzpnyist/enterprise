@@ -113,7 +113,7 @@
 <div id="login">
     <div class="dologo"></div>
     <form action="<%=path %>/manage/user/login" method="post">
-        <div style="heigth: 44px;line-height: 44px;font-size:22px;text-align: center;"><%=SystemManage.getInstance().getSystemSetting().getName() %>后台管理系统</div>
+        <div style="heigth: 44px;line-height: 44px;font-size:22px;text-align: center;">喜聘人力资源-后台管理系统</div>
         <div style="height: 26px;line-height: 26px;color: red;text-align: center;">${errorMsg}</div>
         <ul>
             <li class="inpLi"><b>用户名：</b><input type="text" name="username" id="username" class="inpLogin"

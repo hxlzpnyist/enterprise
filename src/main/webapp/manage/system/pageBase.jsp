@@ -19,7 +19,7 @@
             <a href="<%=path %>/manage/user/home" class="navbar-brand" style="height: 45px;">
                 <small>
                     <i class="icon-leaf"></i>
-                    <%=SystemManage.getInstance().getSystemSetting().getName() %> - 后台管理系统
+                    喜聘人力资源公司 - 后台管理系统
                 </small>
             </a><!-- /.brand -->
         </div><!-- /.navbar-header -->

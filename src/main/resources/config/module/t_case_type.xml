@@ -72,7 +72,10 @@
 
     <select id="caseType.selectList" parameterType="com.enterprise.entity.CaseType" resultType="com.enterprise.entity.CaseType">
         select * from t_case_type where 1=1
-        order by id DESC
+        <if test="display!=null and display!=''">
+            and display=#{display}
+        </if>
+        order by sort
     </select>
     <select id="caseType.selectById" parameterType="int" resultType="com.enterprise.entity.CaseType">
         select * from t_case_type where 1=1 and id=#{id}

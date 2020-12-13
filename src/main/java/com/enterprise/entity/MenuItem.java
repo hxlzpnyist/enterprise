@@ -26,6 +26,13 @@ public class MenuItem{
 		this.children = children;
 	}
 
+	public MenuItem(String url, String name, List<MenuItem> children) {
+		super();
+		this.url = url;
+		this.name = name;
+		this.children = children;
+	}
+
 	/**
 	 * 是否是按钮
 	 * @return

@@ -1,24 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ include file="/manage/system/pageBase.jsp" %>
-<%@ page info="案例分类管理" %>
+<%@ page info="合作伙伴" %>
 
-<form action="<%=path%>/manage/caseType" method="post">
+<form action="<%=path%>/manage/friend" method="post">
     <div style="height:auto!important;height:550px;min-height:550px;">
         <h3 style="border-bottom: 1px solid #D7D7D7;color: #666666;font-size: 28px;padding-bottom: 20px;margin-bottom: 30px;">
             <%=getServletInfo()%>
             <a href="toAdd" class="btn btn-primary"
                style="padding: 2px 15px;float:right;">
-                <i class="icon-plus "></i>添加案例分类
+                <i class="icon-plus "></i>添加合作伙伴
             </a>
         </h3>
         <div class="filter">
             <button method="deletes" class="btn btn-danger" style="padding:0px 5px;margin-top: -4px;"
-                    onclick="return submitIDs(this,'确定删除选择的案例分类?');">
+                    onclick="return submitIDs(this,'确定删除选择的案例?');">
                 <i class="icon-trash"></i>删除
             </button>
             <div style="float: right">
-                <input type="text" value="${e.name}" class="input-medium search-query" name="name" placeholder="名称"/>
+                <input type="text" value="${e.title}" class="input-medium search-query" name="title" placeholder="标题"/>
                 <button method="selectList" class="btn btn-info" style="padding:0px 5px;margin-top: -4px;"
                         onclick="selectList(this)">
                     <i class="icon-search"></i>查询
@@ -28,8 +28,7 @@
         <table class="table table-bordered table-hover table-striped">
             <tr>
                 <th width="50"><input type="checkbox" id="firstCheckbox"/></th>
-                <th>案例分类名称</th>
-                <th>显示顺序</th>
+                <th>标题</th>
                 <th width="250">创建时间</th>
                 <th width="200">操作</th>
             </tr>
@@ -37,8 +36,7 @@
                 <tr>
                     <td><input type="checkbox" name="ids"
                                value="${item.id}"/></td>
-                    <td>${item.name}</td>
-                    <td>${item.sort}</td>
+                    <td>${item.title}</td>
                     <td>${item.createtime}</td>
                     <td><a href="toEdit?id=${item.id}">编辑</a> | <a href="delete?id=${item.id}">删除</a></td>
                 </tr>

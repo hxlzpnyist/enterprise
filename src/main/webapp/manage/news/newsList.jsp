@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ include file="/manage/system/pageBase.jsp" %>
-<%@ page info="新闻列表" %>
+<%@ page info="新闻管理" %>
 
 <form action="<%=path%>/manage/news" method="post">
     <div style="height:auto!important;height:550px;min-height:550px;">

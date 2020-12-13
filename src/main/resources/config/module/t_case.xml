@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="case">
+    <select id="case.selectPageList" parameterType="com.enterprise.entity.Case" resultType="com.enterprise.entity.Case">
+        select * from t_case where 1=1
+        <if test="title!=null and title!=''">
+            and title like "%"#{title}"%"
+        </if>
+        order by id DESC
+        limit #{offset},#{pageSize}
+    </select>
+    <select id="case.selectPageCount" parameterType="com.enterprise.entity.Case" resultType="java.lang.Integer">
+        select count(*) from t_case where 1=1
+        <if test="title!=null and title!=''">
+            and title like "%"#{title}"%"
+        </if>
+    </select>
+    <insert id="case.insert" parameterType="com.enterprise.entity.Case" useGeneratedKeys="true" keyProperty="id">
+        insert into t_case(
+        id
+        <if test="typeid!=null and typeid!=''">
+            ,typeid
+        </if>
+        <if test="title!=null and title!=''">
+            ,title
+        </if>
+        <if test="content!=null and content!=''">
+            ,content
+        </if>
+        ,createtime
+        <if test="hit!=null and hit!=''">
+            ,hit
+        </if>
+        <if test="display!=null and display!=''">
+            ,display
+        </if>
+        <if test="image!=null and image!=''">
+            ,image
+        </if>
+        ) values (
+        #{id}
+        <if test="typeid!=null and typeid!=''">
+            ,#{typeid}
+        </if>
+        <if test="title!=null and title!=''">
+            ,#{title}
+        </if>
+        <if test="content!=null and content!=''">
+            ,#{content}
+        </if>
+        ,now()
+        <if test="hit!=null and hit!=''">
+            ,#{hit}
+        </if>
+        <if test="display!=null and display!=''">
+            ,#{display}
+        </if>
+        <if test="image!=null and image!=''">
+            ,#{image}
+        </if>
+        )
+    </insert>
+    <update id="case.update" parameterType="com.enterprise.entity.Case">
+        update t_case set
+        id = #{id}
+        <if test="typeid!=null and typeid!=''">
+            ,typeid=#{typeid}
+        </if>
+        <if test="title!=null and title!=''">
+            ,title=#{title}
+        </if>
+        <if test="content!=null and content!=''">
+            ,content=#{content}
+        </if>
+        <if test="hit!=null and hit!=''">
+            ,hit=#{hit}
+        </if>
+        <if test="display!=null and display!=''">
+            ,display=#{display}
+        </if>
+        <if test="image!=null and image!=''">
+            ,image=#{image}
+        </if>
+        where id = #{id}
+    </update>
+    <select id="case.selectOne" parameterType="com.enterprise.entity.Case" resultType="com.enterprise.entity.Case">
+        select * from t_case where 1=1
+        <if test="id!=0">
+            and id=#{id}
+        </if>
+        <if test="title!=null and title!=''">
+            and title=#{title}
+        </if>
+    </select>
+
+
+    <select id="case.selectList" parameterType="com.enterprise.entity.Case" resultType="com.enterprise.entity.Case">
+        select * from t_case where 1=1
+        order by id DESC
+    </select>
+    <select id="case.selectById" parameterType="int" resultType="com.enterprise.entity.Case">
+        select * from t_case where 1=1 and id=#{id}
+    </select>
+    <select id="case.selectNext" parameterType="int" resultType="com.enterprise.entity.Case">
+        select * from t_case where id = (select id from t_case where id &lt; #{id} order by id desc limit 1)
+    </select>
+    <select id="case.selectPrevious" parameterType="int" resultType="com.enterprise.entity.Case">
+        select * from t_case where id = (select id from t_case where id &gt; #{id} order by id desc limit 1)
+    </select>
+    <delete id="case.delete" parameterType="com.enterprise.entity.Case">
+        delete from t_case where id=#{id}
+    </delete>
+    <delete id="case.deleteById" parameterType="int">
+        delete from t_case where id=#{id}
+    </delete>
+</mapper>

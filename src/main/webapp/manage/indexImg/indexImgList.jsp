@@ -122,7 +122,7 @@
 						</tr>
 					<c:forEach var="item" items="${pager.list}">
 						<tr <c:if test="${e.id eq item.id}">class="active"</c:if>>
-							<td style="padding: 10px 10px;"><a href="<%=SystemManage.getInstance().getSystemSetting().getImageRootPath()%>${item.pictureUrl}" target="_blank"><img src="<%=SystemManage.getInstance().getSystemSetting().getImageRootPath()%>${item.pictureUrl}" width="200" /></a></td>
+							<td style="padding: 10px 10px;"><a href="<%=path%>${item.pictureUrl}" target="_blank"><img src="<%=path%>${item.pictureUrl}" width="200" /></a></td>
 							<td>${item.title}</td>
 							<td align="center">${item.orders}</td>
 							<td align="center">
@@ -158,7 +158,7 @@ function commit(obj){
 KindEditor.ready(function(K) {
 	var editor = K.editor({
 		allowFileManager : true,
-		uploadJson: '<%=path%>/resource/kindeditor/jsp/upload_json.jsp',
+		uploadJson: '<%=path%>/manage/file/upload',
 		fileManagerJson : '<%=path%>/resource/kindeditor/jsp/file_manager_json.jsp'
 	});
 

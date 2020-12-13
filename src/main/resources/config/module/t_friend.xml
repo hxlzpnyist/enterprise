@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="friend">
+    <select id="friend.selectPageList" parameterType="com.enterprise.entity.Friend" resultType="com.enterprise.entity.Friend">
+        select * from t_friend where 1=1
+        <if test="title!=null and title!=''">
+            and title like "%"#{title}"%"
+        </if>
+        order by id DESC
+        limit #{offset},#{pageSize}
+    </select>
+    <select id="friend.selectPageCount" parameterType="com.enterprise.entity.Friend" resultType="java.lang.Integer">
+        select count(*) from t_friend where 1=1
+        <if test="title!=null and title!=''">
+            and title like "%"#{title}"%"
+        </if>
+    </select>
+    <insert id="friend.insert" parameterType="com.enterprise.entity.Friend" useGeneratedKeys="true" keyProperty="id">
+        insert into t_friend(
+        id
+        <if test="title!=null and title!=''">
+            ,title
+        </if>
+        ,createtime
+        <if test="display!=null and display!=''">
+            ,display
+        </if>
+        <if test="image!=null and image!=''">
+            ,image
+        </if>
+        ) values (
+        #{id}
+        <if test="title!=null and title!=''">
+            ,#{title}
+        </if>
+        ,now()
+        <if test="display!=null and display!=''">
+            ,#{display}
+        </if>
+        <if test="image!=null and image!=''">
+            ,#{image}
+        </if>
+        )
+    </insert>
+    <update id="friend.update" parameterType="com.enterprise.entity.Friend">
+        update t_friend set
+        id = #{id}
+        <if test="title!=null and title!=''">
+            ,title=#{title}
+        </if>
+        <if test="display!=null and display!=''">
+            ,display=#{display}
+        </if>
+        <if test="image!=null and image!=''">
+            ,image=#{image}
+        </if>
+        where id = #{id}
+    </update>
+    <select id="friend.selectOne" parameterType="com.enterprise.entity.Friend" resultType="com.enterprise.entity.Friend">
+        select * from t_friend where 1=1
+        <if test="id!=0">
+            and id=#{id}
+        </if>
+        <if test="title!=null and title!=''">
+            and title=#{title}
+        </if>
+    </select>
+
+
+    <select id="friend.selectList" parameterType="com.enterprise.entity.Friend" resultType="com.enterprise.entity.Friend">
+        select * from t_friend where 1=1
+        order by id DESC
+    </select>
+    <select id="friend.selectById" parameterType="int" resultType="com.enterprise.entity.Friend">
+        select * from t_friend where 1=1 and id=#{id}
+    </select>
+    <select id="friend.selectNext" parameterType="int" resultType="com.enterprise.entity.Friend">
+        select * from t_friend where id = (select id from t_friend where id &lt; #{id} order by id desc limit 1)
+    </select>
+    <select id="friend.selectPrevious" parameterType="int" resultType="com.enterprise.entity.Friend">
+        select * from t_friend where id = (select id from t_friend where id &gt; #{id} order by id desc limit 1)
+    </select>
+    <delete id="friend.delete" parameterType="com.enterprise.entity.Friend">
+        delete from t_friend where id=#{id}
+    </delete>
+    <delete id="friend.deleteById" parameterType="int">
+        delete from t_friend where id=#{id}
+    </delete>
+</mapper>

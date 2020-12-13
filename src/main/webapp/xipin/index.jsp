@@ -55,6 +55,7 @@
 </head>
 <body>
 <%@include file="/xipin/top.jsp" %>
+
 <div id="header-blank">
 </div>
 <div id="body" class="trans">
@@ -64,6 +65,15 @@
                 <!--<div class="item relative inline-block text-center fz0 over item-0"> <a href="#"​ class="banner-button absolute text-center trans-1s"></a> <img src="" alt="" class="max-w100">
                 <div class="font font-0 text-center absolute nowrap trans-1s"><span class="trans-1s inline-block">模版 · 一样可以很精致</span></div>
                 <img class="img-0 img trans-1s absolute" src="" alt=""/> <img class="img-1 img trans-1s absolute" src="" alt=""/> <img class="img-2 img trans-1s absolute" src="" alt=""/> </div>-->
+                <c:forEach var="item" items="${indexImgs}">
+                    <div class="item relative inline-block text-center fz0 over item-1">
+                        <!--<a class="banner-button absolute text-center trans-1s"></a>-->
+                        <img src="<%=request.getContextPath()%>/${item.pictureUrl}" alt="" class="max-w100">
+                        <a class="absolute">
+                        </a>
+                    </div>
+                </c:forEach>
+
                 <div class="item relative inline-block text-center fz0 over item-1">
                     <!--<a class="banner-button absolute text-center trans-1s"></a>-->
                     <img src="picture/1-1f92z915060-l.jpg" alt="" class="max-w100">
@@ -170,7 +180,7 @@
                         <div class="item inline-block absolute wow fadeInUp" cid="0" status="on">
                             <div class="main trans">
                                 <div class="cover scale relative">
-                                    <img src="picture/notebook.png" alt="喜聘人力与移动签约" class="trans scale-img max-w100">
+                                    <img src="<%=request.getContextPath() + "/attached/image/20201213/20201213000000_717.png"%>" alt="喜聘人力与移动签约" class="trans scale-img max-w100">
                                     <div class="img absolute text-center fz0">
                                         <img src="picture/1-1g009143133218.jpg" alt="喜聘人力与移动签约" class="trans scale-img">
                                     </div>

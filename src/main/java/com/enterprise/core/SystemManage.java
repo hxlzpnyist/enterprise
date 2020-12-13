@@ -138,4 +138,12 @@ public class SystemManage {
     }
 
 
+    // 案例分类
+    public List<CaseType> getCaseType() {
+        return getCacheObject("caseTypes");
+    }
+
+    public void setCaseType(List<CaseType> caseTypes) {
+        putCacheObject("caseTypes", (Serializable) caseTypes);
+    }
 }

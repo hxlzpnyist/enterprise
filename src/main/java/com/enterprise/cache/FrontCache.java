@@ -63,6 +63,8 @@ public class FrontCache implements ServletContextAware {
 		loadAbout();
 		loadService();
 		loadServiceCard();
+
+		loadCaseType();
 	}
 	/**
 	 * 加载系统设置缓存
@@ -194,5 +196,19 @@ public class FrontCache implements ServletContextAware {
 			style = "front";
 		}
 		return "/" + style;
+	}
+
+	@Autowired
+	private CaseTypeService caseTypeService;
+
+	/**
+	 * 加载所有显示的案例分类
+	 */
+	public void loadCaseType() {
+		CaseType caseType = new CaseType();
+		caseType.setDisplay("y");
+
+		List<CaseType> caseTypes = caseTypeService.selectList(caseType);
+		systemManage.setCaseType(caseTypes);
 	}
 }
