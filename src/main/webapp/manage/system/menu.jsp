@@ -24,8 +24,9 @@
     MenuItem aboutMenu = new MenuItem("/manage/about/selectList", "关于我们", null);
     MenuItem aboutUserMenu = new MenuItem("/manage/aboutUser/selectList", "核心成员", null);
     MenuItem friendMenu = new MenuItem("/manage/friend/selectList", "合作伙伴", null);
+    MenuItem contactMenu = new MenuItem("/manage/contact/selectList", "联系我们", null);
 
-    Collection<MenuItem> managerMenus = Arrays.asList(newsMenu, caseTypeMenu, caseMenu, businessMenu, indexImgMenu, aboutMenu, aboutUserMenu, friendMenu);
+    Collection<MenuItem> managerMenus = Arrays.asList(newsMenu, caseTypeMenu, caseMenu, businessMenu, indexImgMenu, aboutMenu, aboutUserMenu, friendMenu, contactMenu);
 
     MenuItem adminMenu = new MenuItem("/manage/user/selectList", "网站管理员", null);
     MenuItem logMenu = new MenuItem("/manage/systemlog/selectList", "日志管理", null);

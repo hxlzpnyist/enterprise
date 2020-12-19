@@ -1,11 +1,16 @@
 package com.enterprise.entity.page;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * 分页模型   实体类继承该类
  */
+@Getter
+@Setter
 public class PageModel implements CleanBean{
 	private int id;	//id
 	private int total;	//数据总数
@@ -16,6 +21,7 @@ public class PageModel implements CleanBean{
 	protected String pagerUrl;	//分页utl
 	private int recordsTotal;	//记录总数
 	private int recordsFiltered;	//记录过滤
+	private int pageNum; // 当前页
 
 	
 
@@ -140,5 +146,7 @@ public class PageModel implements CleanBean{
 		//id = 0;
 	}
 
-
+	public static void main(String[] args) {
+		System.out.println((9 + 4 -1)/4);
+	}
 }

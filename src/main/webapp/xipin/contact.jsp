@@ -16,28 +16,30 @@
     <meta name="description" content="喜聘人力资源"/>
     <meta name="author" content="js代码"/>
     <meta name="copyright" content="js代码"/>
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/animate.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/global.css" rel="stylesheet" type="text/css"/>
-    <link href="css/lib.css" rel="stylesheet" type="text/css"/>
-    <link href="css/style.css" rel="stylesheet" type="text/css"/>
-    <script src="js/jquery-1.9.1.min.js">
+    <link href="<%=request.getContextPath()%>/xipin/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/animate.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/global.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/lib.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/style.css" rel="stylesheet" type="text/css"/>
+    <script src="<%=request.getContextPath()%>/xipin/js/jquery-1.9.1.min.js">
     </script>
-    <script src="js/global.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/global.js">
     </script>
-    <script src="js/cn.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/cn.js">
     </script>
-    <script src="js/checkform.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/checkform.js">
     </script>
-    <script src="js/wow.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/wow.js">
     </script>
-    <script src="js/imagesloaded.min.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/imagesloaded.min.js">
     </script>
-    <script src="js/countup.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/countup.js">
     </script>
-    <script src="js/bootstrap.min.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/bootstrap.min.js">
     </script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=PRp3PrgmVXacldG2QV4GGqkGHi6kVW22"></script>
+
     <script>
         jQuery(window).scrollTop(0);
         jQuery('html,body').scrollTop(0);
@@ -46,6 +48,10 @@
         });
 
         $(function () {
+            var map = new BMap.Map("container");
+            var point = new BMap.Point(116.404, 39.915);
+            map.centerAndZoom(point, 15);
+
             setTimeout(function () {
                     $('#body').show();
                 },
@@ -82,12 +88,10 @@
                             </span>
                 </div>
                 <div class="title">
-                    电话
+                    联系电话
                 </div>
                 <div class="info">
-                    xxx
-                    <br/>
-                    xxx
+                    ${contact.phone}
                 </div>
             </div>
             <div class="item fl text-center relative wow fadeInUp">
@@ -100,8 +104,7 @@
                     邮箱
                 </div>
                 <div class="info">
-                    xxx
-                    <br/>
+                    ${contact.mail}
                 </div>
             </div>
             <div class="item fl text-center relative wow fadeInUp">
@@ -114,85 +117,23 @@
                     传真
                 </div>
                 <div class="info">
-                    xxx
+                    ${contact.phone}
                 </div>
-            </div>
-            <div class="item fl text-center relative wow fadeInUp">
-                <div class="ico">
-                    <img src="picture/ico-online.png" alt="" class="middle">
-                    <span class="middle-span">
-                            </span>
-                </div>
-                <div class="title">
-                    客服
-                </div>
-                <a href="#"​ onClick="popService(service2);"
-                   class="button block text-center">
-                    客服在线
-                </a>
             </div>
         </div>
         <div class="clean">
             <div class="contact-area fr clean">
                 <div class="contact-info2 clean">
                     <div class="title wow fadeInUp">
-                        互联网 · 最高端
+                        喜聘人力资源
                     </div>
                     <div class="address wow fadeInUp">
-                        地点：xx
-                    </div>
-                    <div class="clean relative">
-                        <div class="qrcode fl clean relative wow fadeInUp">
-                            <div class="img fl fz0">
-                                <img src="picture/erweima.png" alt="" class="max-w100">
-                            </div>
-                            <div class="name fl nowrap">
-                                官方微信
-                                <br/>
-                                公众号搜索“互联网”
-                            </div>
-                        </div>
-                        <div class="line absolute hide1300">
-                        </div>
-                        <div class="qrcode fr clean relative wow fadeInUp">
-                            <div class="img fl fz0">
-                                <img src="picture/erweima.png" alt="" class="max-w100">
-                            </div>
-                            <div class="name fl nowrap">
-                                官方微博
-                                <br/>
-                                搜索“互联网”
-                            </div>
-                        </div>
+                        地点：${contact.address}
                     </div>
                 </div>
-                <form class="contact-form fr fz0" action="#" enctype="multipart/form-data"
-                      method="post">
-                    <input type="hidden" name="action" value="post" />
-                    <input type="hidden" name="diyid" value="1" />
-                    <input type="hidden" name="do" value="2" />
-                    <input type="text" style="margin-left:0;" class="text inline-block wow fadeInUp"
-                           name="name" maxlength="20" placeholder="姓名" check="请输入姓名！~*">
-                    <input type="text" class="text inline-block wow fadeInUp" name="tel" maxlength="20"
-                           placeholder="电话" check="请输入电话！~*">
-                    <input type="text" class="text inline-block wow fadeInUp" name="email"
-                           maxlength="20" placeholder="邮箱" check="~email|“{value}”不是一个正确的邮箱格式！">
-                    <textarea name="content" class="area block wow fadeInUp" placeholder="留言"
-                              check="请输入留言！~*" autocomplete="off">
-                            </textarea>
-                    <input type="hidden" name="dede_fields" value="name,text;tel,text;email,text;content,text"
-                    />
-                    <input type="hidden" name="dede_fieldshash" value="6eef2ab94532badd3ceda1f6fd888674"
-                    />
-                    <div class="rows clean">
-                        <!--<div class="code-img fl wow fadeInUp"><a href='javascript:void(0);' onclick='this.blur(); obj=document.getElementById("2f8a6bf31f3bd67bd2d9720c58b19c9a"); obj.src=obj.src+Math.random(); return true;'><img src='picture/verification_code.php' align='absmiddle' id='2f8a6bf31f3bd67bd2d9720c58b19c9a'></a></div>-->
-                        <input type="submit" name="submit" class="button wow fadeInUp fr" value="提交">
-                    </div>
-                </form>
+
             </div>
-            <div class="map fl fz0 over relative text-center wow fadeInUp">
-                <img src="picture/map.jpg" alt="" class="img-0">
-                <img src="picture/map.jpg" alt="" class="img-1 absolute">
+            <div id="container" class="map fl fz0 over relative text-center wow fadeInUp" style="height: 400px;">
             </div>
         </div>
     </div>

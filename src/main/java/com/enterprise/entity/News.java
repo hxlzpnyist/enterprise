@@ -3,6 +3,8 @@ package com.enterprise.entity;
 import com.enterprise.entity.page.PageModel;
 import lombok.Data;
 
+import java.text.SimpleDateFormat;
+
 /**
  * 文章实体类
  */
@@ -19,6 +21,8 @@ public class News extends PageModel {
 
     private String display;
 
+    private String viewTime;
+
     @Override
     public void clean() {
         super.clean();
@@ -29,4 +33,7 @@ public class News extends PageModel {
         display = null;
     }
 
+    public String getViewTime() {
+        return createtime.split(" ")[0];
+    }
 }

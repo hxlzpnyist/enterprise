@@ -44,6 +44,9 @@ public class Case extends PageModel {
      */
     private String display;
 
+    private String viewTime;
+
+
     @Override
     public void clean() {
         super.clean();
@@ -53,6 +56,10 @@ public class Case extends PageModel {
         hit = null;
         display = null;
         image = null;
+    }
+
+    public String getViewTime() {
+        return createtime.split(" ")[0];
     }
 
 }

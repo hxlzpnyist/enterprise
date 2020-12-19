@@ -113,5 +113,5 @@ jdbc.url=jdbc:mysql://localhost:3306/enterprise?useUnicode=true&characterEncodin
 ## 后端首页
 ![后端首页](https://github.com/zhupanlinch/enterprise/blob/master/src/main/webapp/attached/image/back.png)
 
-
+CREATE DATABASE IF NOT EXISTS enterprise DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_chinese_ci;
 

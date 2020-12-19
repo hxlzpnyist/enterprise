@@ -16,27 +16,27 @@
     <meta name="description" content="喜聘人力资源"/>
     <meta name="author" content="js代码"/>
     <meta name="copyright" content="js代码"/>
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/animate.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/global.css" rel="stylesheet" type="text/css"/>
-    <link href="css/lib.css" rel="stylesheet" type="text/css"/>
-    <link href="css/style.css" rel="stylesheet" type="text/css"/>
-    <script src="js/jquery-1.9.1.min.js">
+    <link href="<%=request.getContextPath()%>/xipin/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/animate.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/global.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/lib.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/style.css" rel="stylesheet" type="text/css"/>
+    <script src="<%=request.getContextPath()%>/xipin/js/jquery-1.9.1.min.js">
     </script>
-    <script src="js/global.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/global.js">
     </script>
-    <script src="js/cn.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/cn.js">
     </script>
-    <script src="js/checkform.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/checkform.js">
     </script>
-    <script src="js/wow.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/wow.js">
     </script>
-    <script src="js/imagesloaded.min.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/imagesloaded.min.js">
     </script>
-    <script src="js/countup.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/countup.js">
     </script>
-    <script src="js/bootstrap.min.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/bootstrap.min.js">
     </script>
     <script>
         jQuery(window).scrollTop(0);
@@ -61,12 +61,6 @@
     </div>
     <div class="wrap clean">
         <div class="left fl">
-            <div class="title wow fadeInUp">
-                互联网 · 最高端 模板一样可以很精致
-            </div>
-            <div class="hotline wow fadeInUp">
-                xxx xxx
-            </div>
             <div class="address wow fadeInUp">
                 xx&nbsp;&nbsp;&nbsp;
                 <a href="#" ​ target="_blank">
@@ -80,39 +74,6 @@
             </div>
         </div>
         <div class="follow fr fz0">
-            <div class="title relative text-center wow fadeInUp">
-                            <span class="relative">
-                                关注
-                            </span>
-            </div>
-            <div class="text-center">
-                <div class="item text-center inline-block wow fadeInUp">
-                    <a href="#" ​
-                       class="ico block trans qq" rel="nofollow">
-                        <i class="fa fa-qq middle trans" onClick="popService(service2);">
-                        </i>
-                    </a>
-                    QQ
-                </div>
-                <div class="item text-center inline-block wow fadeInUp relative">
-                    <a href="#" ​ class="ico block trans wechat" rel="nofollow">
-                        <i class="fa fa-weixin middle trans">
-                        </i>
-                    </a>
-                    微信
-                    <div class="qrcode absolute trans">
-                        <img src="picture/erweima.png" alt="" width="200"/>
-                    </div>
-                </div>
-                <div class="item text-center inline-block wow fadeInUp">
-                    <a href="#" ​ class="ico block trans sina" rel="nofollow"
-                       target="_blank">
-                        <i class="fa fa-weibo middle trans">
-                        </i>
-                    </a>
-                    微博
-                </div>
-            </div>
         </div>
     </div>
     <div class="blank20">

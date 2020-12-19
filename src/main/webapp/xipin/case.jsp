@@ -16,27 +16,27 @@
     <meta name="description" content="喜聘人力资源"/>
     <meta name="author" content="js代码"/>
     <meta name="copyright" content="js代码"/>
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/animate.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/global.css" rel="stylesheet" type="text/css"/>
-    <link href="css/lib.css" rel="stylesheet" type="text/css"/>
-    <link href="css/style.css" rel="stylesheet" type="text/css"/>
-    <script src="js/jquery-1.9.1.min.js">
+    <link href="<%=request.getContextPath()%>/xipin/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/animate.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/global.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/lib.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/style.css" rel="stylesheet" type="text/css"/>
+    <script src="<%=request.getContextPath()%>/xipin/js/jquery-1.9.1.min.js">
     </script>
-    <script src="js/global.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/global.js">
     </script>
-    <script src="js/cn.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/cn.js">
     </script>
-    <script src="js/checkform.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/checkform.js">
     </script>
-    <script src="js/wow.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/wow.js">
     </script>
-    <script src="js/imagesloaded.min.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/imagesloaded.min.js">
     </script>
-    <script src="js/countup.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/countup.js">
     </script>
-    <script src="js/bootstrap.min.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/bootstrap.min.js">
     </script>
     <script>
         jQuery(window).scrollTop(0);
@@ -45,7 +45,76 @@
             mobile: false
         });
 
+        var path = '<%=request.getContextPath()%>';
+        var pageSize = 4;
+        function queryCase(pageNum) {
+            $.ajax({
+                type: 'GET',
+                url: "<%=request.getContextPath()%>/xipin/cases",
+                data: {
+                    "pageNum" : pageNum,
+                    "pageSize" : pageSize
+                },
+                success: function (data, textStatus, jqXHR) {
+                    console.log(data);
+
+                    displayCase(data);
+                },
+                dataType: "json"
+            });
+        }
+
+        function displayCase(data) {
+            var $list = $(".instance-list");
+            var content = '';
+            var list = data.list;
+
+            for (var i = 0; i < list.length; i++) {
+                var ca = list[i];
+
+                content += '<div class="item border-box over wow fadeInUp '+ ((i % 2) == 0 ? "fl" : "fr") +'"> ' +
+                    '<div class="relative clean"> ' +
+                        '<div class="cover fl relative"> ' +
+                            '<img src="'+ path +'/xipin/picture/notebook.png" alt="科纳网络" class="trans max-w100" ondragstart="return false;"> ' +
+                        '<div class="img absolute text-center fz0"> ' +
+                            '<img src="'+ path + '/' + ca.image +'" alt="科纳网络" class="trans" ondragstart="return false;"> ' +
+                        '</div> ' +
+                    '</div> ' +
+                    '<div class="info fl"> ' +
+                        '<div class="clean"> ' +
+
+                            '<div class="title fl"> ' +
+                                '<div class="name">'+ ca.title +'</div> ' +
+                                '<div class="date">合作时间: '+ ca.viewTime +' </div> ' +
+                            '</div> ' +
+                        '</div> ' +
+                        '<div class="brief over">' + ca.content +
+                        '</div> ' +
+                        '<a href="caseshow.html"  class="view block text-center" rel="nofollow">查看内容 </a> ' +
+                    '</div> </div> </div>';
+            }
+
+            var page = ''
+
+            var currentPage = data.pageNum;
+            var totalPage = data.pagerSize;
+            if (currentPage > 0) {
+                page += '<a class="page_item" href="javascript:void(0);" onclick="queryCase('+ (currentPage - 1) +')">上一页 </a>';
+            }
+
+            page += '<font class="page_item_current">'+ (currentPage + 1) +'</font>';
+
+            if (currentPage + 1 < totalPage) {
+                page += '<a class="page_item" href="javascript:void(0);" onclick="queryCase('+ (currentPage + 1) +')">下一页</a>';
+            }
+
+            $list.html(content);
+            $("#turn_page").html(page);
+        }
+
         $(function () {
+            queryCase(0, "");
+
             setTimeout(function () {
                     $('#body').show();
                 },
@@ -61,7 +130,7 @@
         <div class="bd over">
             <div class="bar relative fz0 nowrap">
                 <div class="item relative inline-block text-center fz0 over item-0">
-                    <img src="picture/44c5a1b00c.jpg" alt="" class="max-w100">
+                    <img src="<%=request.getContextPath()%>/xipin/picture/44c5a1b00c.jpg" alt="" class="max-w100">
                 </div>
             </div>
         </div>
@@ -75,41 +144,7 @@
     <div class="bgf3">
         <div id="instance" class="wrap clean">
             <div class="instance-list clean">
-                <div class='item border-box over wow fadeInUp fl'>
-                    <div class="relative clean">
-                        <div class="cover fl relative">
-                            <img src="picture/notebook.png" alt="科纳网络" class="trans max-w100" ondragstart="return false;">
-                            <div class="img absolute text-center fz0">
-                                <img src="picture/1-1g0091606040-l.jpg" alt="科纳网络" class="trans" ondragstart="return false;">
-                            </div>
-                        </div>
-                        <div class="info fl">
-                            <div class="clean">
-                                <div class="logo fl text-center over fz0">
-                                    <img src="picture/1-1g0091606040-l.jpg" alt="科纳网络" class="middle max-w100 inline-block">
-                                    <span class="middle-span">
-                                            </span>
-                                </div>
-                                <div class="title fl">
-                                    <div class="name">
-                                        科纳网络
-                                    </div>
-                                    <div class="date">
-                                        合作时间:2017/10/09
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="brief over">
-                                Shenzhen West East Connect Internet Technology Co., Ltd. has been in business
-                                since 2014 of China, with famous subordinate brand TechMe. And its products
-                                cover storage, stationery and daily necessities....
-                            </div>
-                            <a href="caseshow.html"​ ​ class="view block text-center" rel="nofollow">
-                                查看内容
-                            </a>
-                        </div>
-                    </div>
-                </div>
+
                 <div class='item border-box over wow fadeInUp fr'>
                     <div class="relative clean">
                         <div class="cover fl relative">

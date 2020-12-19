@@ -98,6 +98,9 @@
 
     <select id="case.selectList" parameterType="com.enterprise.entity.Case" resultType="com.enterprise.entity.Case">
         select * from t_case where 1=1
+        <if test="typeid!=null and typeid!=''">
+            and typeid=#{typeid}
+        </if>
         order by id DESC
     </select>
     <select id="case.selectById" parameterType="int" resultType="com.enterprise.entity.Case">

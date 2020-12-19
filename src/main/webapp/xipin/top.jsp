@@ -16,27 +16,27 @@
     <meta name="description" content="喜聘人力资源"/>
     <meta name="author" content="js代码"/>
     <meta name="copyright" content="js代码"/>
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/animate.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/global.css" rel="stylesheet" type="text/css"/>
-    <link href="css/lib.css" rel="stylesheet" type="text/css"/>
-    <link href="css/style.css" rel="stylesheet" type="text/css"/>
-    <script src="js/jquery-1.9.1.min.js">
+    <link href="<%=request.getContextPath()%>/xipin/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/animate.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/global.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/lib.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/style.css" rel="stylesheet" type="text/css"/>
+    <script src="<%=request.getContextPath()%>/xipin/js/jquery-1.9.1.min.js">
     </script>
-    <script src="js/global.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/global.js">
     </script>
-    <script src="js/cn.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/cn.js">
     </script>
-    <script src="js/checkform.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/checkform.js">
     </script>
-    <script src="js/wow.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/wow.js">
     </script>
-    <script src="js/imagesloaded.min.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/imagesloaded.min.js">
     </script>
-    <script src="js/countup.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/countup.js">
     </script>
-    <script src="js/bootstrap.min.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/bootstrap.min.js">
     </script>
     <script>
         jQuery(window).scrollTop(0);
@@ -58,6 +58,7 @@
     <div class="wrap clean relative">
         <div id="logo" class="fl relative trans">
             <a href="index.html" ​ class="relative trans">
+                <!-- 183*68 -->
                 <img src="picture/logo.png" alt="" class="max-w100 max-h100 trans">
             </a>
         </div>
@@ -68,32 +69,32 @@
                     </a>
                 </div>
                 <div class="nav-item fl text-center trans">
-                    <a href="index.jsp" ​ class='on trans'>
+                    <a href="<%=request.getContextPath()%>/xipin/home" class='on trans'>
                         首页
                     </a>
                 </div>
                 <div class="nav-item fl text-center trans">
-                    <a href="about.jsp" ​>
+                    <a href="<%=request.getContextPath()%>/xipin/toabout">
                         关于
                     </a>
                 </div>
                 <div class="nav-item fl text-center trans">
-                    <a href="business.jsp" ​>
+                    <a href="<%=request.getContextPath()%>/xipin/tobusiness">
                         业务
                     </a>
                 </div>
                 <div class="nav-item fl text-center trans">
-                    <a href="case.jsp" ​>
+                    <a href="<%=request.getContextPath()%>/xipin/tocase">
                         案例
                     </a>
                 </div>
                 <div class="nav-item fl text-center trans">
-                    <a href="news.jsp" ​>
+                    <a href="<%=request.getContextPath()%>/xipin/tonews">
                         新闻
                     </a>
                 </div>
                 <div class="nav-item fl text-center trans">
-                    <a href="contact.jsp" ​>
+                    <a href="<%=request.getContextPath()%>/xipin/tocontact" >
                         联系我们
                     </a>
                 </div>

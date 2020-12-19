@@ -16,27 +16,27 @@
     <meta name="description" content="喜聘人力资源"/>
     <meta name="author" content="js代码"/>
     <meta name="copyright" content="js代码"/>
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/animate.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/global.css" rel="stylesheet" type="text/css"/>
-    <link href="css/lib.css" rel="stylesheet" type="text/css"/>
-    <link href="css/style.css" rel="stylesheet" type="text/css"/>
-    <script src="js/jquery-1.9.1.min.js">
+    <link href="<%=request.getContextPath()%>/xipin/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/animate.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/global.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/lib.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/style.css" rel="stylesheet" type="text/css"/>
+    <script src="<%=request.getContextPath()%>/xipin/js/jquery-1.9.1.min.js">
     </script>
-    <script src="js/global.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/global.js">
     </script>
-    <script src="js/cn.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/cn.js">
     </script>
-    <script src="js/checkform.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/checkform.js">
     </script>
-    <script src="js/wow.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/wow.js">
     </script>
-    <script src="js/imagesloaded.min.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/imagesloaded.min.js">
     </script>
-    <script src="js/countup.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/countup.js">
     </script>
-    <script src="js/bootstrap.min.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/bootstrap.min.js">
     </script>
     <script>
         jQuery(window).scrollTop(0);
@@ -45,7 +45,63 @@
             mobile: false
         });
 
+        var path = '<%=request.getContextPath()%>';
+        function queryBusiness() {
+            $.ajax({
+                type: 'GET',
+                url: "<%=request.getContextPath()%>/xipin/business",
+                success: function (data, textStatus, jqXHR) {
+                    console.log(data);
+                    displayBusiness(data);
+                },
+                dataType: "json"
+            });
+        }
+
+        function getBusinessInfo(id) {
+            $.ajax({
+                type: 'GET',
+                url: "<%=request.getContextPath()%>/xipin/businessInfo",
+                data: {
+                    "id" : id
+                },
+                success: function (data, textStatus, jqXHR) {
+                    console.log(data);
+                    displayBusinessInfo(data);
+                },
+                dataType: "json"
+            });
+        }
+
+        function displayBusiness(data) {
+            var $list = $(".category-list");
+            var content = '';
+            var list = data;
+
+            for (var i = 0; i < list.length; i++) {
+                var business = list[i];
+
+                content += '<a href="javascript:void(0);" onclick="getBusinessInfo('+ business.id +')" class="item inline-block trans ">'+ business.title +'</a>';
+            }
+
+            $list.html(content);
+
+            // 默认展示第一个
+            displayBusinessInfo(data[0]);
+        }
+
+        function displayBusinessInfo(data) {
+            var $list = $(".products-list");
+            var content = '<div class="item inline-block relative wow fadeInUp"> ' +
+                '<div class="main">' + data.content + '</div> </div>';
+
+            $list.html(content);
+        }
+
         $(function () {
+            queryBusiness();
+
+
             setTimeout(function () {
                     $('#body').show();
                 },

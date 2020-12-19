@@ -16,27 +16,27 @@
     <meta name="description" content="喜聘人力资源"/>
     <meta name="author" content="js代码"/>
     <meta name="copyright" content="js代码"/>
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/animate.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/global.css" rel="stylesheet" type="text/css"/>
-    <link href="css/lib.css" rel="stylesheet" type="text/css"/>
-    <link href="css/style.css" rel="stylesheet" type="text/css"/>
-    <script src="js/jquery-1.9.1.min.js">
+    <link href="<%=request.getContextPath()%>/xipin/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/animate.min.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/global.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/lib.css" rel="stylesheet" type="text/css"/>
+    <link href="<%=request.getContextPath()%>/xipin/css/style.css" rel="stylesheet" type="text/css"/>
+    <script src="<%=request.getContextPath()%>/xipin/js/jquery-1.9.1.min.js">
     </script>
-    <script src="js/global.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/global.js">
     </script>
-    <script src="js/cn.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/cn.js">
     </script>
-    <script src="js/checkform.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/checkform.js">
     </script>
-    <script src="js/wow.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/wow.js">
     </script>
-    <script src="js/imagesloaded.min.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/imagesloaded.min.js">
     </script>
-    <script src="js/countup.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/countup.js">
     </script>
-    <script src="js/bootstrap.min.js">
+    <script src="<%=request.getContextPath()%>/xipin/js/bootstrap.min.js">
     </script>
     <script>
         jQuery(window).scrollTop(0);
@@ -45,7 +45,68 @@
             mobile: false
         });
 
+        var pageSize = 4;
+        function queryNews(pageNum, title) {
+            $.ajax({
+                type: 'GET',
+                url: "<%=request.getContextPath()%>/xipin/news",
+                data: {
+                    "pageNum" : pageNum,
+                    "pageSize" : pageSize,
+                    "title" : title
+                },
+                success: function (data, textStatus, jqXHR) {
+                    console.log(data);
+
+                    displayNews(data);
+                },
+                dataType: "json"
+            });
+        }
+
+        function displayNews(data) {
+            var $list = $(".tutorial-list");
+            var content = '';
+            var list = data.list;
+
+            for (var i = 0; i < list.length; i++) {
+                var news = list[i];
+
+                content += '<div class="item wow fadeInUp '+ ((i % 2) == 0 ? "fl" : "fr") +'">' +
+                '<div class="date fl">' +
+                    '<div class="year">'+ news.viewTime +'</div>' +
+                '</div> ' +
+                '<div class="info fl"> ' +
+                '<div class="name text-over"> ' +
+                '<a href="newsshow.html" class="trans">'+ news.title +'</a> ' +
+                '</div> ' +
+                '<div class="brief over">' + news.content +
+                '</div> ' +
+                '</div></div>';
+            }
+
+            var page = ''
+
+            var currentPage = data.pageNum;
+            var totalPage = data.pagerSize;
+            if (currentPage > 0) {
+                page += '<a class="page_item" href="javascript:void(0);" onclick="queryNews('+ (currentPage - 1) +')">上一页 </a>';
+            }
+
+            page += '<font class="page_item_current">'+ (currentPage + 1) +'</font>';
+
+            if (currentPage + 1 < totalPage) {
+                page += '<a class="page_item" href="javascript:void(0);" onclick="queryNews('+ (currentPage + 1) +')">下一页</a>';
+            }
+
+            $(".tutorial-list").html(content);
+            $("#turn_page").html(page);
+
+        }
+
         $(function () {
+            queryNews(0, "");
+
             setTimeout(function () {
                     $('#body').show();
                 },
@@ -62,7 +123,7 @@
         <div class="bd over">
             <div class="bar relative fz0 nowrap">
                 <div class="item relative inline-block text-center fz0 over item-0">
-                    <img src="picture/710472f909.jpg" alt="" class="max-w100">
+                    <img src="<%=request.getContextPath()%>/xipin/picture/710472f909.jpg" alt="" class="max-w100">
                 </div>
             </div>
         </div>
@@ -81,20 +142,20 @@
                     <input type="text" class="text block border-box" name="q" value="" placeholder="在哪里设置网站关键词">
                     <input type="submit" class="hide" value="">
                 </form>
-                <!--<a href="#"​ class="play ico trans fl middle wow fadeInUp">视频</a>-->
+                <!--<a href="#" class="play ico trans fl middle wow fadeInUp">视频</a>-->
                 <div class="line fl middle">
                 </div>
-                <a href="#"​ class="file ico trans fl middle wow fadeInUp">
+                <a href="#" class="file ico trans fl middle wow fadeInUp">
                     新闻
                 </a>
-                <a href="#"​ class="question ico trans fr middle wow fadeInUp">
+                <a href="#" class="question ico trans fr middle wow fadeInUp">
                     我要提问
                 </a>
             </div>
         </div>
         <div class="wrap">
             <div class="tutorial-list clean">
-                <div class='item wow fadeInUp fl'>
+                <div class="item wow fadeInUp fl">
                     <div class="date fl">
                         <div class="year">
                             2017
@@ -105,7 +166,7 @@
                     </div>
                     <div class="info fl">
                         <div class="name text-over">
-                            <a href="newsshow.html"​ class="trans">
+                            <a href="newsshow.html" class="trans">
                                 为什么企业要建多国语言网站？
                             </a>
                         </div>
@@ -114,117 +175,16 @@
                         </div>
                     </div>
                 </div>
-                <div class='item wow fadeInUp fr'>
-                    <div class="date fl">
-                        <div class="year">
-                            2017
-                        </div>
-                        <div class="day">
-                            09-29
-                        </div>
-                    </div>
-                    <div class="info fl">
-                        <div class="name text-over">
-                            <a href="newsshow.html"​ class="trans">
-                                什么是伪静态？伪静态有何作用?
-                            </a>
-                        </div>
-                        <div class="brief over">
-                            伪静态是相对真实静态来讲的，真实静态会生成一个html或htm后缀的文件，访客能够访问到真实存在的静态页面，而伪静态则没有生成实体静态页面文件，而仅仅是以.html一类的静态页面...
-                        </div>
-                    </div>
-                </div>
-                <div class='item wow fadeInUp fl'>
-                    <div class="date fl">
-                        <div class="year">
-                            2017
-                        </div>
-                        <div class="day">
-                            09-29
-                        </div>
-                    </div>
-                    <div class="info fl">
-                        <div class="name text-over">
-                            <a href="newsshow.html"​ class="trans">
-                                企业建站选择主机和产品服务遇到的问题
-                            </a>
-                        </div>
-                        <div class="brief over">
-                            个人建站和企业建站是两个不同的，个人建站我们则是需要考虑成本的支出，比较大部分个人建站仅仅是用于兴趣爱好，对于空间和服务的要求可能不是很高的，而企业建站则是不同了...
-                        </div>
-                    </div>
-                </div>
-                <div class='item wow fadeInUp fr'>
-                    <div class="date fl">
-                        <div class="year">
-                            2017
-                        </div>
-                        <div class="day">
-                            09-29
-                        </div>
-                    </div>
-                    <div class="info fl">
-                        <div class="name text-over">
-                            <a href="newsshow.html"​ class="trans">
-                                SEO网站的基本术语
-                            </a>
-                        </div>
-                        <div class="brief over">
-                            SEO SEO就是Search Engine Optimization的缩写,中文就是搜索引擎优化。 PR 值全称为PageRank(网页级别）,是Google用于用来标识网页的等级、重要性的一种方法，是Google用来衡量一个网站的好坏的重...
-                        </div>
-                    </div>
-                </div>
-                <div class='item wow fadeInUp fl'>
-                    <div class="date fl">
-                        <div class="year">
-                            2017
-                        </div>
-                        <div class="day">
-                            09-29
-                        </div>
-                    </div>
-                    <div class="info fl">
-                        <div class="name text-over">
-                            <a href="newsshow.html"​ class="trans">
-                                SEO快速排名算法
-                            </a>
-                        </div>
-                        <div class="brief over">
-                            一、IP环境 地区相关性限制，非本地区的IP点击不计分(PS：部分行业有此限制，比如地区旅游行业网站，如上海旅行社必须需要上海本地的IP点击，否则不加分，多次使用外地IP点击不仅...
-                        </div>
-                    </div>
-                </div>
-                <div class='item wow fadeInUp fr'>
-                    <div class="date fl">
-                        <div class="year">
-                            2017
-                        </div>
-                        <div class="day">
-                            09-29
-                        </div>
-                    </div>
-                    <div class="info fl">
-                        <div class="name text-over">
-                            <a href="newsshow.html"​ class="trans">
-                                SEO怎么加快文章的收录速度
-                            </a>
-                        </div>
-                        <div class="brief over">
-                            不论做网站还是在各大网站发文章大家都比较关心网站的页面收录情况，每天有规律的更新，每天在各大平台发那么多内容，但是网站和文章的收录情况并不乐观，查下网站的整体收录...
-                        </div>
-                    </div>
-                </div>
             </div>
             <div id="turn_page" class="wow fadeInUp" first last>
+                <a class="page_item" href='list_12_2.html'>
+                    上一页
+                </a>
                 <font class="page_item_current">
                     1
                 </font>
                 <a class="page_item" href='list_12_2.html'>
-                    2
-                </a>
-                <a class="page_button" href='list_12_2.html'>
-                    <i class="fa fa-chevron-right trans middle">
-                    </i>
+                    下一页
                 </a>
             </div>
         </div>
