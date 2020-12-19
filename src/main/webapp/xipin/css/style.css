@@ -597,8 +597,6 @@ header.on .header-user .member {
 	vertical-align: middle;
 }
 #products .products-bg {
-	background-color: #f8f8f8;
-	background-image: url(../images/shadow.png);
 	background-repeat: repeat-x;
 	background-position: left top;
 	padding: 70px 0 55px;

@@ -50,12 +50,13 @@
         });
 
         var path = '<%=request.getContextPath()%>';
+
         function queryCase(caseType) {
             $.ajax({
                 type: 'GET',
                 url: "<%=request.getContextPath()%>/xipin/caseByType",
                 data: {
-                    "caseType" : caseType
+                    "caseType": caseType
                 },
                 success: function (data, textStatus, jqXHR) {
                     console.log(data);
@@ -74,26 +75,28 @@
                 var cases = list[i];
 
                 content += '<div class="item inline-block absolute wow fadeInUp" cid="0" status="on"> ' +
-                                '<div class="main trans"> ' +
-                                    '<div class="cover scale relative"> ' +
-                                        '<img src="'+ path +'/xipin/picture/notebook.png" alt="" class="trans scale-img max-w100"> ' +
-                                        '<div class="img absolute text-center fz0"> ' +
-                                            '<img src="'+ path + '/' + cases.image + '" alt=""class="trans scale-img"> ' +
-                                        '</div> ' +
-                                    '</div> ' +
-                                    '<div class="info clean"> ' +
-                                        '<div class="left fl"> ' +
-                                            '<div class="name">'+ cases.title +'</div> ' +
-                                        '</div> ' +
-                                    '</div> ' +
-                                '</div> <div class="mask trans"> </div></div>';
+                    '<div class="main trans"> ' +
+                    '<div class="cover scale relative"> ' +
+                    '<img src="' + path + '/xipin/picture/notebook.png" alt="" class="trans scale-img max-w100"> ' +
+                    '<div class="img absolute text-center fz0"> ' +
+                    '<img src="' + path + '/' + cases.image + '" alt=""class="trans scale-img"> ' +
+                    '</div> ' +
+                    '</div> ' +
+                    '<div class="info clean"> ' +
+                    '<div class="left fl"> ' +
+                    '<div class="name">' + cases.title + '</div> ' +
+                    '</div> ' +
+                    '</div> ' +
+                    '</div> <div class="mask trans"> </div></div>';
             }
 
-            $(".products-list").html(content);
-            $(".products-list").height(333);
+            //$(".products-list").html(content);
+            //$(".products-list").height(333);
         }
 
         $(function () {
+            $(".products-list").height(180);
+
             setTimeout(function () {
                     $('#body').show();
                 },
@@ -139,12 +142,12 @@
     </div>
     <div id="products" class="index">
         <div class="index-title text-center wow fadeInUp">
-            成功案例
+            服务业务
         </div>
         <div class="index-brief text-center wow fadeInUp">
-            1000家企业客户 + 高端服务团队
+            六大业务领域 + 高端服务团队
         </div>
-        <div class="category-list text-center fz0 hide992 wow fadeInUp">
+        <%--<div class="category-list text-center fz0 hide992 wow fadeInUp">
             <c:forEach var="item" items="${caseTypes}">
                 <a href="javascript:void(0);" onclick="queryCase(${item.id})" class="item inline-block trans"
                    cid="6"
@@ -153,16 +156,16 @@
                 </a>
             </c:forEach>
 
-        </div>
+        </div>--%>
         <div class="category-list text-center show992 wow fadeInUp">
             <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                    成功案例
+                    服务业务
                     <span class="caret">
                             </span>
                 </button>
-                <ul class="dropdown-menu">
+                <%--<ul class="dropdown-menu">
                     <c:forEach var="item" items="${caseTypes}">
                         <li>
                             <a href="<%=request.getContextPath()%>/xipin/home?caseType=${item.id}" ​ cid="6"
@@ -172,87 +175,54 @@
                         </li>
                     </c:forEach>
 
-                </ul>
+                </ul>--%>
             </div>
         </div>
-        <div class="products-bg trans">
-            <div class="wrap">
-                <div id="products-box" class="over">
-                    <div class="products-list relative fz0 trans" style="height: 330px;">
-                        <c:forEach var="item" items="${cases}">
-                            <div class="item inline-block absolute wow fadeInUp" cid="0" status="on">
-                                <div class="main trans">
-                                    <div class="cover scale relative">
-                                        <img src="picture/notebook.png"
-                                             alt="${item.title}" class="trans scale-img max-w100">
-                                        <div class="img absolute text-center fz0">
-                                            <img src="<%=request.getContextPath()%>/${item.image}" alt="${item.title}"
-                                                 class="trans scale-img">
-                                        </div>
-                                    </div>
-                                    <div class="info clean">
-                                        <div class="left fl">
-                                            <div class="name">
-                                                    ${item.title}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mask trans">
-                                </div>
-                            </div>
-                        </c:forEach>
-                        <div class="item inline-block absolute wow fadeInUp" cid="0" status="on">
-                            <div class="main trans">
-                                <div class="cover scale relative">
-                                    <img src="picture/notebook.png" alt="喜聘人力与移动签约" class="trans scale-img max-w100">
-                                    <div class="img absolute text-center fz0">
-                                        <img src="picture/1-1g009143133218.jpg" alt="喜聘人力与移动签约" class="trans scale-img">
-                                    </div>
-                                </div>
-                                <div class="info clean">
-                                    <div class="left fl">
-                                        <div class="name">
-                                            喜聘人力与移动签约
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mask trans">
-                            </div>
-                        </div>
-
-                        <div class="item inline-block absolute wow fadeInUp" cid="0" status="on">
-                            <div class="main trans">
-                                <div class="cover scale relative">
-                                    <img src="picture/notebook.png" alt="喜聘人力与移动签约" class="trans scale-img max-w100">
-                                    <div class="img absolute text-center fz0">
-                                        <img src="picture/1-1g009143133218.jpg" alt="喜聘人力与移动签约" class="trans scale-img">
-                                    </div>
-                                </div>
-                                <div class="info clean">
-                                    <div class="left fl">
-                                        <div class="name">
-                                            喜聘人力与移动签约
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mask trans">
-                            </div>
-                        </div>
-
-                    </div>
-                    <%--<div class="box-button text-center fz0 wow fadeInUp">
-                        <!--<a href="#"​ class="prev button inline-block trans" rel="nofollow"><i class="fa fa-chevron-left trans middle"></i></a>-->
-                        <a href="#" ​ class="more-list inline-block trans">
-                            <i class="trans middle relative">
-                            </i>
-                        </a>
-                        <!--<a href="#"​ class="next button inline-block trans" rel="nofollow"><i class="fa fa-chevron-right trans middle"></i></a>-->
-                    </div>--%>
-                </div>
-            </div>
+        <div class="products-bg trans" style="margin:0 auto; width: 90%;text-align:center;">
+            <ul style="overflow: hidden;">
+                <li class="animate-box fadeInUp animated" style="width: 16%; height: 120px;padding: 40px;float: left">
+                    <a href="javascript:void(0);">
+                        <img src="<%=request.getContextPath()%>/xipin/picture/service/1.png">
+                        <br>
+                        <h3>校企合作</h3>
+                    </a>
+                </li>
+                <li class="animate-box fadeInUp animated" style="width: 16%; height: 120px;padding: 40px;float: left">
+                    <a href="javascript:void(0);">
+                        <img src="<%=request.getContextPath()%>/xipin/picture/service/2.png">
+                        <br>
+                        <h3>派遣服务</h3>
+                    </a>
+                </li>
+                <li class="animate-box fadeInUp animated" style="width: 16%; height: 120px;padding: 40px;float: left">
+                    <a href="javascript:void(0);">
+                        <img src="<%=request.getContextPath()%>/xipin/picture/service/3.png">
+                        <br>
+                        <h3>灵活用工</h3>
+                    </a>
+                </li>
+                <li class="animate-box fadeInUp animated" style="width: 16%; height: 120px;padding: 40px;float: left">
+                    <a href="javascript:void(0);">
+                        <img src="<%=request.getContextPath()%>/xipin/picture/service/4.png">
+                        <br>
+                        <h3>外包服务</h3>
+                    </a>
+                </li>
+                <li class="animate-box fadeInUp animated" style="width: 16%; height: 120px;padding: 40px;float: left">
+                    <a href="javascript:void(0);">
+                        <img src="<%=request.getContextPath()%>/xipin/picture/service/5.png">
+                        <br>
+                        <h3>代理招聘</h3>
+                    </a>
+                </li>
+                <li class="animate-box fadeInUp animated" style="width: 17%; height: 120px;padding: 40px;float: left">
+                    <a href="javascript:void(0);">
+                        <img src="<%=request.getContextPath()%>/xipin/picture/service/6.png">
+                        <br>
+                        <h3>人才猎聘</h3>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
     <div class="blank15">
@@ -332,17 +302,17 @@
                 <div class='item wow fadeInUp fl' class="item wow fadeInUp fl">
                     <div class="date fl">
                         <div class="year">
-                            ${item.viewTime}
+                                ${item.viewTime}
                         </div>
                     </div>
                     <div class="info fl">
                         <div class="name text-over">
                             <a href="#" ​ class="trans">
-                                ${item.title}
+                                    ${item.title}
                             </a>
                         </div>
                         <div class="brief over">
-                            ${item.content}
+                                ${item.content}
                         </div>
                     </div>
                 </div>
