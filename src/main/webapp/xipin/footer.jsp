@@ -89,7 +89,7 @@
     </div>
 </footer>
 <div id="follow">
-    <div id="openHotline" class="item relative hide992" row="2">
+    <%--<div id="openHotline" class="item relative hide992" row="2">
         <a href="#" ​ class="ico orange block absolute" title="服务热线"
            onclick="OptHot(1);OptQrcode(0);OptOnline(0);" rel="nofollow">
         </a>
@@ -159,7 +159,7 @@
         <div id="wechat-qrcode">
             <img src="picture/erweima.png" alt="" width="200"/>
         </div>
-    </div>
+    </div>--%>
     <div class="item relative">
         <a href="#" ​ class="ico block trans totop show totop" title="回到顶部"
            onclick="toTop();" rel="nofollow">
@@ -169,7 +169,7 @@
     </div>
 </div>
 </div>
-<script src="js/website.js">
+<script src="<%=request.getContextPath()%>/xipin/js/website.js">
 </script>
 </body>
 </html>

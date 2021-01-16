@@ -90,7 +90,7 @@
                         '</div> ' +
                         '<div class="brief over">' + ca.content +
                         '</div> ' +
-                        '<a href="caseshow.html"  class="view block text-center" rel="nofollow">查看内容 </a> ' +
+                        '<a href="'+path+'/xipin/case/info?id='+ca.id+'"  class="view block text-center" rel="nofollow">查看内容 </a> ' +
                     '</div> </div> </div>';
             }
 

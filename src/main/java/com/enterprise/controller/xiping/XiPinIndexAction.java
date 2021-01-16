@@ -210,6 +210,10 @@ public class XiPinIndexAction {
         return "/" + style + "/index";
     }
 
-
+    @RequestMapping(value = "/case/info", method = RequestMethod.GET)
+    public String getCaseById(@RequestParam("id") Integer id, HttpServletRequest request) {
+        request.setAttribute("ca", caseService.selectById(id));
+        return "/xipin/caseshow";
+    }
 }
 

@@ -59,7 +59,7 @@
         <div id="logo" class="fl relative trans">
             <a href="index.html" ​ class="relative trans">
                 <!-- 183*68 -->
-                <img src="picture/logo.png" alt="" class="max-w100 max-h100 trans">
+                <img src="<%=request.getContextPath()%>/xipin/picture/logo.png" alt="" class="max-w100 max-h100 trans">
             </a>
         </div>
         <nav class="absolute fz0 trans border-box stopP ">
