@@ -215,5 +215,11 @@ public class XiPinIndexAction {
         request.setAttribute("ca", caseService.selectById(id));
         return "/xipin/caseshow";
     }
+
+    @RequestMapping(value = "/news/info", method = RequestMethod.GET)
+    public String getNewsById(@RequestParam("id") Integer id, HttpServletRequest request) {
+        request.setAttribute("news", newsService.selectById(id));
+        return "/xipin/newsshow";
+    }
 }
 

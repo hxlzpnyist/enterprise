@@ -46,6 +46,7 @@
         });
 
         var pageSize = 4;
+        var path = '<%=request.getContextPath()%>';
         function queryNews(pageNum, title) {
             $.ajax({
                 type: 'GET',
@@ -78,7 +79,7 @@
                 '</div> ' +
                 '<div class="info fl"> ' +
                 '<div class="name text-over"> ' +
-                '<a href="newsshow.html" class="trans">'+ news.title +'</a> ' +
+                '<a href="'+path+'/xipin/news/info?id='+news.id+'" class="trans">'+ news.title +'</a> ' +
                 '</div> ' +
                 '<div class="brief over">' + news.content +
                 '</div> ' +
