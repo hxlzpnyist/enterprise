@@ -55,11 +55,7 @@
 <body>
 
 <footer>
-    <div class="blank15">
-    </div>
-    <div class="blank15">
-    </div>
-    <div class="wrap clean">
+    <%--<div class="wrap clean">
         <div class="left fl">
             <div class="address wow fadeInUp">
                 xx&nbsp;&nbsp;&nbsp;
@@ -73,21 +69,21 @@
                 </a>
             </div>
         </div>
+        <div class="right fl">
+            <div class="address wow fadeInUp">
+                喜聘（北京）人力资源有限公司
+            </div>
+        </div>
         <div class="follow fr fz0">
         </div>
-    </div>
-    <div class="blank20">
-    </div>
-    <div class="blank15">
-    </div>
+    </div>--%>
     <div class="bottom">
         <div class="wrap clean">
             <div class="links fl">
-                友情链接 :
-
+                喜聘（北京）人力资源有限公司 037160950568
             </div>
             <div class="copyright fr">
-                Copyright &copy; 2020
+                Copyright © 2021 xipinbeijing.com | 京ICP备2020048644号
             </div>
         </div>
     </div>

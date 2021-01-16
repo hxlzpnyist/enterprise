@@ -46,6 +46,7 @@
         });
 
         var path = '<%=request.getContextPath()%>';
+        var type = '<%=request.getAttribute("type")%>';
         function queryBusiness() {
             $.ajax({
                 type: 'GET',
@@ -77,17 +78,21 @@
             var $list = $(".category-list");
             var content = '';
             var list = data;
-
+            var viewData = data[0];
             for (var i = 0; i < list.length; i++) {
                 var business = list[i];
 
                 content += '<a href="javascript:void(0);" onclick="getBusinessInfo('+ business.id +')" class="item inline-block trans ">'+ business.title +'</a>';
+
+                if (type != null && business.title == type) {
+                    viewData = business;
+                }
             }
 
             $list.html(content);
 
             // 默认展示第一个
-            displayBusinessInfo(data[0]);
+            displayBusinessInfo(viewData);
         }
 
         function displayBusinessInfo(data) {
@@ -200,22 +205,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="blank25">
-    </div>
-    <div class="blank25">
-    </div>
-    <div class="blank25">
-    </div>
-    <div class="blank25">
-    </div>
-    <div class="text-center">
-        <div class="try-button-box wrap fz0">
-            <a href="#"​ target="_blank"
-               class="button inline-block text-center trans wow fadeInUp">
-                我要私人定制
-            </a>
         </div>
     </div>
     <div class="blank25">

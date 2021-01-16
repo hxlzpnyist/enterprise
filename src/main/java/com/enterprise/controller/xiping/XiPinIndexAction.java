@@ -102,7 +102,8 @@ public class XiPinIndexAction {
     }
 
     @RequestMapping(value = "/tobusiness", method = RequestMethod.GET)
-    public String toBusiness() {
+    public String toBusiness(@RequestParam(value = "type", required = false) String type, HttpServletRequest request) {
+        request.setAttribute("type", type);
         return "/xipin/business";
     }
 

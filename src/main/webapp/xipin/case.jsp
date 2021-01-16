@@ -339,23 +339,6 @@
     </div>
     <div class="blank25">
     </div>
-    <div class="blank25">
-    </div>
-    <div class="text-center">
-        <div class="try-button-box wrap fz0">
-            <a href="#" ​ target="_blank" class="button inline-block text-center trans wow fadeInUp">
-                我要私人定制
-            </a>
-        </div>
-    </div>
-    <div class="blank25">
-    </div>
-    <div class="blank25">
-    </div>
-    <div class="blank25">
-    </div>
-    <div class="blank25">
-    </div>
 <%@include file="/xipin/footer.jsp" %>
 </body>
 </html>

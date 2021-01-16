@@ -42,6 +42,32 @@
     </script>
     <script src="<%=request.getContextPath()%>/xipin/js/bootstrap.min.js">
     </script>
+    <style type="text/css">
+        .animate-box {
+            width: 16%; height: 130px;padding: 40px;float: left
+        }
+        .animate-box img {
+            margin-bottom: 10px;
+        }
+        .animate-box h3{
+            font-size: 20px;
+        }
+        @media screen and (max-width: 1500px) and (min-width:1200px){
+            .animate-box {
+                width: 16%; height: 130px;padding: 40px;float: left
+            }
+        }
+        @media screen and (min-width:800px) and (max-width:1200px){
+            .animate-box {
+                width: 32%; height: 140px;padding: 40px;float: left
+            }
+        }
+        @media screen and (max-width:800px) {
+            .animate-box {
+                width: 50%; height: 140px;padding: 40px;float: left
+            }
+        }
+    </style>
     <script>
         jQuery(window).scrollTop(0);
         jQuery('html,body').scrollTop(0);
@@ -159,71 +185,53 @@
         </div>--%>
         <div class="category-list text-center show992 wow fadeInUp">
             <div class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                    服务业务
-                    <span class="caret">
-                            </span>
-                </button>
-                <%--<ul class="dropdown-menu">
-                    <c:forEach var="item" items="${caseTypes}">
-                        <li>
-                            <a href="<%=request.getContextPath()%>/xipin/home?caseType=${item.id}" ​ cid="6"
-                               rel="nofollow">
-                                    ${item.name}
-                            </a>
-                        </li>
-                    </c:forEach>
-
-                </ul>--%>
             </div>
         </div>
         <div class="products-bg trans" style="margin:0 auto; width: 90%;text-align:center;">
             <ul style="overflow: hidden;">
-                <li class="animate-box fadeInUp animated" style="width: 16%; height: 120px;padding: 40px;float: left">
-                    <a href="javascript:void(0);">
+                <li class="animate-box fadeInUp animated">
+                    <a href="<%=request.getContextPath()%>/xipin/tobusiness?type=校企合作">
                         <img src="<%=request.getContextPath()%>/xipin/picture/service/1.png">
                         <br>
                         <h3>校企合作</h3>
                     </a>
                 </li>
-                <li class="animate-box fadeInUp animated" style="width: 16%; height: 120px;padding: 40px;float: left">
-                    <a href="javascript:void(0);">
+                <li class="animate-box fadeInUp animated" >
+                    <a href="<%=request.getContextPath()%>/xipin/tobusiness?type=派遣服务">
                         <img src="<%=request.getContextPath()%>/xipin/picture/service/2.png">
                         <br>
                         <h3>派遣服务</h3>
                     </a>
                 </li>
-                <li class="animate-box fadeInUp animated" style="width: 16%; height: 120px;padding: 40px;float: left">
-                    <a href="javascript:void(0);">
+                <li class="animate-box fadeInUp animated">
+                    <a href="<%=request.getContextPath()%>/xipin/tobusiness?type=灵活用工">
                         <img src="<%=request.getContextPath()%>/xipin/picture/service/3.png">
                         <br>
                         <h3>灵活用工</h3>
                     </a>
                 </li>
-                <li class="animate-box fadeInUp animated" style="width: 16%; height: 120px;padding: 40px;float: left">
-                    <a href="javascript:void(0);">
+                <li class="animate-box fadeInUp animated" >
+                    <a href="<%=request.getContextPath()%>/xipin/tobusiness?type=外包服务">
                         <img src="<%=request.getContextPath()%>/xipin/picture/service/4.png">
                         <br>
                         <h3>外包服务</h3>
                     </a>
                 </li>
-                <li class="animate-box fadeInUp animated" style="width: 16%; height: 120px;padding: 40px;float: left">
-                    <a href="javascript:void(0);">
+                <li class="animate-box fadeInUp animated" >
+                    <a href="<%=request.getContextPath()%>/xipin/tobusiness?type=代理招聘">
                         <img src="<%=request.getContextPath()%>/xipin/picture/service/5.png">
                         <br>
                         <h3>代理招聘</h3>
                     </a>
                 </li>
-                <li class="animate-box fadeInUp animated" style="width: 17%; height: 120px;padding: 40px;float: left">
-                    <a href="javascript:void(0);">
+                <li class="animate-box fadeInUp animated">
+                    <a href="<%=request.getContextPath()%>/xipin/tobusiness?type=人才猎聘">
                         <img src="<%=request.getContextPath()%>/xipin/picture/service/6.png">
                         <br>
                         <h3>人才猎聘</h3>
                     </a>
                 </li>
             </ul>
-        </div>
     </div>
     <div class="blank15">
     </div>
@@ -231,7 +239,7 @@
     </div>
     <div class="index-cooperation wrap">
         <div class="index-title text-center wow fadeInUp">
-            合作
+            合作伙伴
         </div>
         <div class="index-brief text-center wow fadeInUp">
             服务了哪些客户很重要 用心 更重要！
@@ -275,10 +283,7 @@
     </div>
     <div class="index-tutorial">
         <div class="index-title text-center wow fadeInUp">
-            新闻
-        </div>
-        <div class="index-brief text-center wow fadeInUp">
-            智能建站、零基础建站
+            人资资讯
         </div>
         <div class="blank20">
         </div>
@@ -324,14 +329,14 @@
         </div>
         <div class="blank25">
         </div>
-        <div class="text-center">
+        <%--<div class="text-center">
             <div class="try-button-box wrap fz0">
                 <a href="#" ​ target="_blank"
                    class="button inline-block text-center trans wow fadeInUp">
                     我需要服务
                 </a>
             </div>
-        </div>
+        </div>--%>
     </div>
     <div class="blank25">
     </div>
