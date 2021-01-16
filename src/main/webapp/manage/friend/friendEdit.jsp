@@ -14,6 +14,9 @@
             <a href="<%=path %>/manage/friend/selectList" class="btn btn-primary"
                style="padding: 2px 15px;float:right;"><i class="icon-double-angle-left"></i>返回列表</a>
         </h3>
+        <div class="alert alert-info">
+            注意：图片尺寸请参考 130*110。
+        </div>
         <table width="100%" border="0" cellspacing="0" cellpadding="10" class="tableBasic">
 
             <tr style="display: none;">

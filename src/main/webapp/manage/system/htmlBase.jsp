@@ -93,7 +93,7 @@
     <meta name="keywords" content="<%=SystemManage.getInstance().getSystemSetting().getKeywords() %>"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title><%=SystemManage.getInstance().getSystemSetting().getName() %> - 后台管理系统</title>
+    <title>喜聘人力资源 - 后台管理系统</title>
     <%--图标--%><link rel="shortcut icon" type="image/x-icon"
                     href="<%=SystemManage.getInstance().getSystemSetting().getImageRootPath() %><%=SystemManage.getInstance().getSystemSetting().getFavicon() %>">
 

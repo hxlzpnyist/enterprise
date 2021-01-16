@@ -609,7 +609,7 @@ header.on .header-user .member {
 	left: 0;
 }
 #products-box .products-list .item {
-	width: 30.588%;
+	width: 98%;
 	margin-right: 3.823529%;
 	margin-bottom: 60px;
 	vertical-align: top;
@@ -632,7 +632,7 @@ header.on .header-user .member {
 	animation-name: zoomOut
 }
 #products-box .products-list .item .main {
-	max-width: 520px;
+	max-width: 80%;
 	margin: 0 auto;
 }
 #products-box .products-list .item .cover {
@@ -2749,7 +2749,7 @@ header .preview-button {
 	z-index: 10;
 }
 #products-box .products-list .item {
-	width: 50%;
+	width: 98%;
 	margin-right: 0;
 }
 #products-box .products-list .item.on {

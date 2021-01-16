@@ -312,7 +312,7 @@
                     </div>
                     <div class="info fl">
                         <div class="name text-over">
-                            <a href="#" ​ class="trans">
+                            <a href="<%=request.getContextPath()%>/xipin/news/info?id=${item.id}" class="trans">
                                     ${item.title}
                             </a>
                         </div>

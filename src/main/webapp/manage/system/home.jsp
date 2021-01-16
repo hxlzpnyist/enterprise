@@ -54,7 +54,7 @@
         </ul>
     </div>
 
-    <div class="indexBox">
+    <%--<div class="indexBox">
         <div class="boxTitle">SEO设置</div>
         <ul>
             <table width="100%" border="0" cellspacing="0" cellpadding="7" class="tableBasic">
@@ -82,7 +82,7 @@
                 </tr>
             </table>
         </ul>
-    </div>
+    </div>--%>
 <%--
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="indexBoxTwo">
