@@ -134,7 +134,7 @@
                 <div class="item item0 fl relative text-center wow fadeInUp">
                     <div class="img grayscale">
                         <a href="javascript:void(0);" class="trans block" title="${aboutUser.name}" rel="nofollow">
-                            <img src="<%=request.getContextPath()%>/${aboutUser.image}" alt="${aboutUser.name}" class="grayscale-img max-w100 trans">
+                            <img src="<%=request.getContextPath()%>${aboutUser.image}" alt="${aboutUser.name}" class="grayscale-img max-w100 trans">
                         </a>
                     </div>
                 </div>

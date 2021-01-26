@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 主页
  */
-@Controller
+//@Controller
 @RequestMapping("/")
 public class IndexAction {
 

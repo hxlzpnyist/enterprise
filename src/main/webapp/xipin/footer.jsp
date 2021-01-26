@@ -79,11 +79,25 @@
     </div>--%>
     <div class="bottom">
         <div class="wrap clean">
-            <div class="links fl">
+            <div class="links fl" style="color:#939393;">
                 喜聘（北京）人力资源有限公司 037160950568
             </div>
-            <div class="copyright fr">
-                Copyright © 2021 xipinbeijing.com | 京ICP备2020048644号
+            <div class="copyright fr" style="color:#939393;">
+                <span>
+                    Copyright © 2021 xipinbeijing.com | 京ICP备2020048644号 |
+                </span>
+                <img src="<%=request.getContextPath()%>/xipin/picture/img.png" style="width:14px;height:14px;vertical-align: middle;margin-top: -2px;"/>
+                <span>
+                    京公网安备 11010802034149号
+                </span>
+
+                <%--<a target="_blank" href=" " style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+                    Copyright © 2021 xipinbeijing.com | 京ICP备2020048644号 |
+                </a >
+                <a target="_blank" href=" " style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+                    <img src="<%=request.getContextPath()%>/xipin/picture/img.png" style="float:left; width:14px;height:14px;vertical-align: middle;margin-top: -2px;"/>
+                    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">京公网安备 11010802034149号</p >
+                </a >--%>
             </div>
         </div>
     </div>

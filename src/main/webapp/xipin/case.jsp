@@ -77,7 +77,7 @@
                         '<div class="cover fl relative"> ' +
                             '<img src="'+ path +'/xipin/picture/notebook.png" alt="科纳网络" class="trans max-w100" ondragstart="return false;"> ' +
                         '<div class="img absolute text-center fz0"> ' +
-                            '<img src="'+ path + '/' + ca.image +'" alt="科纳网络" class="trans" ondragstart="return false;"> ' +
+                            '<img src="'+ path + ca.image +'" alt="科纳网络" class="trans" ondragstart="return false;"> ' +
                         '</div> ' +
                     '</div> ' +
                     '<div class="info fl"> ' +

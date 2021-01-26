@@ -16,7 +16,7 @@ import java.util.List;
  * 主页
  */
 @Controller
-@RequestMapping("/xipin")
+@RequestMapping("/")
 public class XiPinIndexAction {
 
     @Autowired
@@ -56,7 +56,7 @@ public class XiPinIndexAction {
     private AboutUserService aboutUserService;
 
 
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(@RequestParam(value = "caseType", required = false) Integer caseType, HttpServletRequest request) {
 
         // 门户滚动图片
@@ -91,23 +91,23 @@ public class XiPinIndexAction {
      *
      * @return
      */
-    @RequestMapping(value = "/tonews", method = RequestMethod.GET)
+    @RequestMapping(value = "/xipin/tonews", method = RequestMethod.GET)
     public String toNews() {
         return "/xipin/news";
     }
 
-    @RequestMapping(value = "/tocase", method = RequestMethod.GET)
+    @RequestMapping(value = "/xipin/tocase", method = RequestMethod.GET)
     public String toCase() {
         return "/xipin/case";
     }
 
-    @RequestMapping(value = "/tobusiness", method = RequestMethod.GET)
+    @RequestMapping(value = "/xipin/tobusiness", method = RequestMethod.GET)
     public String toBusiness(@RequestParam(value = "type", required = false) String type, HttpServletRequest request) {
         request.setAttribute("type", type);
         return "/xipin/business";
     }
 
-    @RequestMapping(value = "/toabout", method = RequestMethod.GET)
+    @RequestMapping(value = "/xipin/toabout", method = RequestMethod.GET)
     public String toAbout(HttpServletRequest request) {
         About about = aboutService.selectOne(new About());
         List<AboutUser> aboutUsers = aboutUserService.selectList(new AboutUser());
@@ -118,7 +118,7 @@ public class XiPinIndexAction {
         return "/xipin/about";
     }
 
-    @RequestMapping(value = "/tocontact", method = RequestMethod.GET)
+    @RequestMapping(value = "/xipin/tocontact", method = RequestMethod.GET)
     public String toContact(HttpServletRequest request) {
         Contact contact = contactService.selectOne(new Contact());
         request.setAttribute("contact", contact);
@@ -130,7 +130,7 @@ public class XiPinIndexAction {
      * 查询案例分类下的案例
      */
     @ResponseBody
-    @RequestMapping(value = "/caseByType", method = RequestMethod.GET)
+    @RequestMapping(value = "/xipin/caseByType", method = RequestMethod.GET)
     public List<Case> listCaseTypes(@RequestParam(value = "caseType", required = false) Integer caseType) {
         List<Case> cases = caseService.getByCaseTypeId(caseType);
         return cases;
@@ -142,14 +142,14 @@ public class XiPinIndexAction {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/business", method = RequestMethod.GET)
+    @RequestMapping(value = "/xipin/business", method = RequestMethod.GET)
     public List<Business> listBusiness() {
         List<Business> businesses = businessService.selectList(new Business());
         return businesses;
     }
 
     @ResponseBody
-    @RequestMapping(value = "/businessInfo", method = RequestMethod.GET)
+    @RequestMapping(value = "/xipin/businessInfo", method = RequestMethod.GET)
     public Business getBusinessById(@RequestParam("id") int id) {
         Business businesse = businessService.selectById(id);
         return businesse;
@@ -164,7 +164,7 @@ public class XiPinIndexAction {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/news", method = RequestMethod.GET)
+    @RequestMapping(value = "/xipin/news", method = RequestMethod.GET)
     public PageModel listNews(@RequestParam("pageNum") int pageNum, @RequestParam(value = "title", required = false) String title, @RequestParam("pageSize") int pageSize) {
         News news = new News();
 
@@ -185,7 +185,7 @@ public class XiPinIndexAction {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/cases", method = RequestMethod.GET)
+    @RequestMapping(value = "/xipin/cases", method = RequestMethod.GET)
     public PageModel listCase(@RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize) {
         Case aCase = new Case();
 
@@ -210,13 +210,13 @@ public class XiPinIndexAction {
         return "/" + style + "/index";
     }
 
-    @RequestMapping(value = "/case/info", method = RequestMethod.GET)
+    @RequestMapping(value = "/xipin/case/info", method = RequestMethod.GET)
     public String getCaseById(@RequestParam("id") Integer id, HttpServletRequest request) {
         request.setAttribute("ca", caseService.selectById(id));
         return "/xipin/caseshow";
     }
 
-    @RequestMapping(value = "/news/info", method = RequestMethod.GET)
+    @RequestMapping(value = "/xipin/news/info", method = RequestMethod.GET)
     public String getNewsById(@RequestParam("id") Integer id, HttpServletRequest request) {
         request.setAttribute("news", newsService.selectById(id));
         return "/xipin/newsshow";

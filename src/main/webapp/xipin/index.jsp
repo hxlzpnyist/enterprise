@@ -253,7 +253,7 @@
                         <div class="item inline-block border-box trans">
                             <a class="text-center block border-box trans fz0 grayscale" title="${item.title}"
                                rel="nofollow">
-                                <img src="<%=request.getContextPath()%>/${item.image}" alt="${item.title}"
+                                <img src="<%=request.getContextPath()%>${item.image}" alt="${item.title}"
                                      class="max-w100 max-h100 middle grayscale-img trans">
                                 <span class="middle-span">
                                     </span>
@@ -292,7 +292,7 @@
         <div class="max-wrap clean relative wow fadeInUp">
             <div class="img fl hide1300">
                 <a title="">
-                    <img src="picture/3da6124a3d.jpg" alt="" class="max-w100 block">
+                    <img src="<%=request.getContextPath()%>/xipin/picture/3da6124a3d.jpg" alt="" class="max-w100 block">
                 </a>
             </div>
             <div class="tutorial-support absolute">

@@ -87,4 +87,8 @@
 	<delete id="aboutUser.delete" parameterType="com.enterprise.entity.AboutUser">
 		delete from t_about_user where id = #{id}
 	</delete>
+	<delete id="aboutUser.deleteById" parameterType="int">
+		delete from t_about_user where id = #{id}
+	</delete>
+
 </mapper>

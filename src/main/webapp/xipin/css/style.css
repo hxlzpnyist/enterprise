@@ -2988,7 +2988,7 @@ footer .bottom .copyright {
 	display: block;
 }
 .hide768 {
-	display: none;
+	display:block;
 }
 /*header nav{width: auto;min-width: 20%;height: auto !important;line-height: 34px;padding: 20px;right: -200px;}
 	header nav.on{right: 0;}

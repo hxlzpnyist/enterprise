@@ -57,7 +57,7 @@
 <header class="trans border-box  ">
     <div class="wrap clean relative">
         <div id="logo" class="fl relative trans">
-            <a href="index.html" ​ class="relative trans">
+            <a href="<%=request.getContextPath()%>/" ​ class="relative trans">
                 <!-- 183*68 -->
                 <img src="<%=request.getContextPath()%>/xipin/picture/logo.png" alt="" class="max-w100 max-h100 trans">
             </a>
@@ -69,7 +69,7 @@
                     </a>
                 </div>
                 <div class="nav-item fl text-center trans">
-                    <a href="<%=request.getContextPath()%>/xipin/home" class='on trans'>
+                    <a href="<%=request.getContextPath()%>/" class='on trans'>
                         首页
                     </a>
                 </div>

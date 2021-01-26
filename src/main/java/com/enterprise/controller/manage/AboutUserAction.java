@@ -51,12 +51,12 @@ public class AboutUserAction extends BaseController<AboutUser>{
         addMessage(flushAttrs, "操作成功！");
         return "redirect:selectList";
     }
-    @RequestMapping("delete")
+    /*@RequestMapping("delete")
     public String delete(HttpServletRequest request, @ModelAttribute("e") AboutUser entity, RedirectAttributes flushAttrs) throws Exception{
         getService().delete(entity);
         insertAfter(entity);
         addMessage(flushAttrs, "操作成功！");
         return "redirect:selectList";
-    }
+    }*/
 
 }
