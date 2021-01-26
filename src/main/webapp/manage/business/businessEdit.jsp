@@ -72,13 +72,13 @@
         content = K.create('textarea[name="content"]', {
             filterMode: false,
             allowFileManager: true,
-            uploadJson: '<%=path%>/resource/kindeditor/jsp/upload_json.jsp',
+            uploadJson: '<%=path%>/manage/file/upload',
             fileManagerJson: '<%=path%>/resource/kindeditor/jsp/file_manager_json.jsp'
 
         });
         var editor = K.editor({
             allowFileManager : true,
-            uploadJson: '<%=path%>/resource/kindeditor/jsp/upload_json.jsp',
+            uploadJson: '<%=path%>/manage/file/upload',
             fileManagerJson : '<%=path%>/resource/kindeditor/jsp/file_manager_json.jsp'
         });
 

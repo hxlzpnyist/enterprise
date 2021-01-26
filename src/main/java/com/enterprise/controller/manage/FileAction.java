@@ -35,7 +35,6 @@ public class FileAction {
 
         file.transferTo(tmpFile);
 
-
         JSONObject obj = new JSONObject();
         obj.put("error", 0);
         obj.put("url", "/attached/image/" + fileName);
@@ -44,26 +43,24 @@ public class FileAction {
     }
 
 
-        @RequestMapping(value = "", method = RequestMethod.POST)
+    //@RequestMapping(value = "upload", method = RequestMethod.POST)
     public void uploadFile(@RequestParam("imgFile") MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws FileUploadException, IOException {
-        //String savePath = pageContext.getServletContext().getRealPath("/") + "attached/";
+        //文件保存目录URL
+        String saveUrl = request.getContextPath() + "/attached/image";
 
-//文件保存目录URL
-        String saveUrl  = request.getContextPath() + "/attached/";
-
-//定义允许上传的文件扩展名
+        //定义允许上传的文件扩展名
         HashMap<String, String> extMap = new HashMap<String, String>();
         extMap.put("image", "gif,jpg,jpeg,png,bmp");
         extMap.put("flash", "swf,flv");
         extMap.put("media", "swf,flv,mp3,wav,wma,wmv,mid,avi,mpg,asf,rm,rmvb");
         extMap.put("file", "doc,docx,xls,xlsx,ppt,htm,html,txt,zip,rar,gz,bz2");
 
-//最大文件大小
+        //最大文件大小
         long maxSize = 9999999;
 
         response.setContentType("text/html; charset=UTF-8");
 
-        if(!ServletFileUpload.isMultipartContent(request)){
+        if (!ServletFileUpload.isMultipartContent(request)) {
             log.warn("请选择文件");
             return;
         }
@@ -72,8 +69,7 @@ public class FileAction {
         if (dirName == null) {
             dirName = "image";
         }
-//创建文件夹
-        //savePath += dirName + "/";
+        //创建文件夹
         saveUrl += dirName + "/";
         File saveDirFile = new File(saveUrl);
         if (!saveDirFile.exists()) {
@@ -99,23 +95,23 @@ public class FileAction {
             long fileSize = item.getSize();
             if (!item.isFormField()) {
                 //检查文件大小
-                if(item.getSize() > maxSize){
+                if (item.getSize() > maxSize) {
                     response.getWriter().println("上传文件大小超过限制。");
                     return;
                 }
                 //检查扩展名
                 String fileExt = fileName.substring(fileName.lastIndexOf(".") + 1).toLowerCase();
-                if(!Arrays.<String>asList(extMap.get(dirName).split(",")).contains(fileExt)){
+                if (!Arrays.<String>asList(extMap.get(dirName).split(",")).contains(fileExt)) {
                     response.getWriter().println("上传文件扩展名是不允许的扩展名。\\n只允许\" + extMap.get(dirName) + \"格式。");
                     return;
                 }
 
                 SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
                 String newFileName = df.format(new Date()) + "_" + new Random().nextInt(1000) + "." + fileExt;
-                try{
+                try {
                     File uploadedFile = new File(saveUrl, newFileName);
                     item.write(uploadedFile);
-                }catch(Exception e){
+                } catch (Exception e) {
                     response.getWriter().println("上传文件失败。");
                     return;
                 }

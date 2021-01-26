@@ -210,7 +210,7 @@ var K = {
 };
 var _INLINE_TAG_MAP = _toMap('a,abbr,acronym,b,basefont,bdo,big,br,button,cite,code,del,dfn,em,font,i,img,input,ins,kbd,label,map,q,s,samp,select,small,span,strike,strong,sub,sup,textarea,tt,u,var'),
 	_BLOCK_TAG_MAP = _toMap('address,applet,blockquote,body,center,dd,dir,div,dl,dt,fieldset,form,frameset,h1,h2,h3,h4,h5,h6,head,hr,html,iframe,ins,isindex,li,map,menu,meta,noframes,noscript,object,ol,p,pre,script,style,table,tbody,td,tfoot,th,thead,title,tr,ul'),
-	_SINGLE_TAG_MAP = _toMap('area,base,basefont,br,col,frame,hr,img,input,isindex,link,meta,param,embed'),
+	_SINGLE_TAG_MAP = _toMap('area,base,basefont,br,col,frame,hr,img,input,isindex,link,meta,param,video'),
 	_STYLE_TAG_MAP = _toMap('b,basefont,big,del,em,font,i,s,small,span,strike,strong,sub,sup,u'),
 	_CONTROL_TAG_MAP = _toMap('img,table,input,textarea,button'),
 	_PRE_TAG_MAP = _toMap('pre,style,script'),
@@ -301,7 +301,7 @@ K.options = {
 			'.font-style', '.text-decoration', '.vertical-align', '.background', '.border'
 		],
 		a : ['id', 'class', 'href', 'target', 'name'],
-		embed : ['id', 'class', 'src', 'width', 'height', 'type', 'loop', 'autostart', 'quality', '.width', '.height', 'align', 'allowscriptaccess', 'wmode'],
+		video : ['id', 'class', 'src', 'width', 'height', 'type', 'loop', 'autostart', 'quality', '.width', '.height', 'align', 'allowscriptaccess', 'wmode'],
 		img : ['id', 'class', 'src', 'width', 'height', 'border', 'alt', 'title', 'align', '.width', '.height', '.border'],
 		'p,ol,ul,li,blockquote,h1,h2,h3,h4,h5,h6' : [
 			'id', 'class', 'align', '.text-align', '.color', '.background-color', '.font-size', '.font-family', '.background',
@@ -947,7 +947,7 @@ function _mediaAttrs(srcTag) {
 	return _getAttrList(unescape(srcTag));
 }
 function _mediaEmbed(attrs) {
-	var html = '<embed ';
+	var html = '<video controls="controls" ';
 	_each(attrs, function(key, val) {
 		html += key + '="' + val + '" ';
 	});
@@ -3626,7 +3626,7 @@ function _getInitHtml(themesPath, bodyClass, cssPath, cssData) {
 		'}',
 		'img.ke-media {',
 		'	border:1px solid #AAA;',
-		'	background-image:url(' + themesPath + 'entity/media.gif);',
+		'	background-image:url(' + themesPath + 'common/media.gif);',
 		'	background-position:center center;',
 		'	background-repeat:no-repeat;',
 		'	width:100px;',
@@ -5290,7 +5290,7 @@ KEditor.prototype = {
 	text : function(val) {
 		var self = this;
 		if (val === undefined) {
-			return _trim(self.html().replace(/<(?!img|embed).*?>/ig, '').replace(/&nbsp;/ig, ' '));
+			return _trim(self.html().replace(/<(?!img|video).*?>/ig, '').replace(/&nbsp;/ig, ' '));
 		} else {
 			return self.html(_escape(val));
 		}
@@ -5313,7 +5313,7 @@ KEditor.prototype = {
 			return self.html().length;
 		}
 		if (mode === 'text') {
-			return self.text().replace(/<(?:img|embed).*?>/ig, 'K').replace(/\r\n|\n|\r/g, '').length;
+			return self.text().replace(/<(?:img|video).*?>/ig, 'K').replace(/\r\n|\n|\r/g, '').length;
 		}
 		return 0;
 	},
@@ -6041,12 +6041,12 @@ _plugin('core', function(K) {
 				return full;
 			});
 		}
-		return html.replace(/<embed[^>]*type="([^"]+)"[^>]*>(?:<\/embed>)?/ig, function(full) {
+		return html.replace(/<video[^>]*type="([^"]+)"[^>]*>(?:<\/video>)?/ig, function(full) {
 			var attrs = _getAttrList(full);
 			attrs.src = _undef(attrs.src, '');
 			attrs.width = _undef(attrs.width, 0);
 			attrs.height = _undef(attrs.height, 0);
-			return _mediaImg(self.themesPath + 'entity/blank.gif', attrs);
+			return _mediaImg(self.themesPath + 'common/blank.gif', attrs);
 		})
 		.replace(/<a[^>]*name="([^"]+)"[^>]*>(?:<\/a>)?/ig, function(full) {
 			var attrs = _getAttrList(full);
@@ -6648,7 +6648,7 @@ KindEditor.plugin('clearhtml', function(K) {
 		html = html.replace(/(<style[^>]*>)([\s\S]*?)(<\/style>)/ig, '');
 		html = K.formatHtml(html, {
 			a : ['href', 'target'],
-			embed : ['src', 'width', 'height', 'type', 'loop', 'autostart', 'quality', '.width', '.height', 'align', 'allowscriptaccess'],
+			video : ['src', 'width', 'height', 'type', 'loop', 'autostart', 'quality', '.width', '.height', 'align', 'allowscriptaccess'],
 			img : ['src', 'width', 'height', 'border', 'alt', 'title', '.width', '.height'],
 			table : ['border'],
 			'td,th' : ['rowspan', 'colspan'],
@@ -7097,7 +7097,7 @@ KindEditor.plugin('flash', function(K) {
 							heightBox[0].focus();
 							return;
 						}
-						var html = K.mediaImg(self.themesPath + 'entity/blank.gif', {
+						var html = K.mediaImg(self.themesPath + 'common/blank.gif', {
 								src : url,
 								type : K.mediaType('.swf'),
 								width : width,
@@ -7801,7 +7801,7 @@ KindEditor.plugin('media', function(K) {
 							heightBox[0].focus();
 							return;
 						}
-						var html = K.mediaImg(self.themesPath + 'entity/blank.gif', {
+						var html = K.mediaImg(self.themesPath + 'common/blank.gif', {
 								src : url,
 								type : K.mediaType(url),
 								width : width,

@@ -145,6 +145,7 @@ public abstract class BaseController<E extends PageModel> {
 	protected void insertAfter(E e){
 		
 	}
+
 	/**
 	 * 插入数据
 	 * @param request

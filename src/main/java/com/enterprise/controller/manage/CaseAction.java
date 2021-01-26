@@ -32,6 +32,4 @@ public class CaseAction extends BaseController<Case>{
         super.page_toEdit = page_toEdit;
         super.page_toAdd = page_toAdd;
     }
-
-
 }
